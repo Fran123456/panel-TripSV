@@ -47,3 +47,10 @@ route::post('/updatePerfil/{id}','user\perfilController@update')->name('updatePe
 Route::resource('guia', 'Guia\GuiaTuristicosController');
 route::post('/updateGuia/{id}','Guia\GuiaTuristicosController@update')->name('updateGuia');
 //guia turistico
+
+
+
+//guia paquetes
+Route::resource('paquete', 'paquete\PaqueteController');
+route::post('/paqueteUpdate/{id}','paquete\PaqueteControllerr@update')->name('paqueteUpdate');
+//guia paquetes
