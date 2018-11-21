@@ -102,7 +102,9 @@
                     <a href="{{route('unidad.index')}}"><i class="fa fa-plus-square" aria-hidden="true"></i> <span class="nav-label">Unidades</span></a>
                    </li>
                    <li>
+
                     <a href="{{route('guia.index')}}"><i class="fa fa-laptop"></i> <span class="nav-label">Guia turistico</span></a>
+
                    </li>
                     <li><a href="{{route('usuario.index')}}"><i class="fa fa-user" aria-hidden="true"></i> Usuarios</a></li>
 

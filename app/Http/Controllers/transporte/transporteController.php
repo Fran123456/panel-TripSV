@@ -52,7 +52,6 @@ class transporteController extends Controller
         
         return redirect()->route('unidad.index')
                 ->with('msgN','Unidad agregada correctamente');
-        
     }
 
     /**
@@ -107,7 +106,8 @@ class transporteController extends Controller
     public function destroy($id)
     {
         $del = transporte_model::find($id)->delete();
-       
+
+
         return back()->with('msgD','Unidad eliminada con exito');
     }
 }

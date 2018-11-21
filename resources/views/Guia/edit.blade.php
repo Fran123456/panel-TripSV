@@ -31,7 +31,7 @@
             
             <div class="form-group">
               <div id="divdui"><label id="labeldui">Dui:</label></div>
-              <input type="text" name="dui" class="form-control" value="{{$items->dui}}">
+              <input type="text" name="dui" class="form-control" value="{{$items->dui}}" pattern="[0-9]{9}" title="Debe contener 9 numeros">
             </div>
             
             
