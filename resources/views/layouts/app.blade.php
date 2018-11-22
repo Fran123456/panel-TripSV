@@ -39,6 +39,11 @@
      <script src="{{asset('js/plugins/blueimp/jquery.blueimp-gallery.min.js')}}"></script>
 
 
+     <link href="{{asset('css/plugins/select2/select2.min.css')}}" rel="stylesheet">
+
+
+
+
 
 <!--PLANTILLA------------------------------------------------------------------------>
 

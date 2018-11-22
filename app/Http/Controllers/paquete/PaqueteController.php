@@ -5,6 +5,7 @@ namespace App\Http\Controllers\paquete;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\paquete as package;
+use App\Guia;
 
 class PaqueteController extends Controller
 {
@@ -26,7 +27,8 @@ class PaqueteController extends Controller
      */
     public function create()
     {
-        //
+        $guias = Guia::where('disponibilidad', 'Disponible')->get();
+        return view('paquete.nuevo', compact('guias'));
     }
 
     /**

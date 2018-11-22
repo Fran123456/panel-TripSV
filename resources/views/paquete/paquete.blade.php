@@ -22,10 +22,10 @@
 
     
     <div class="col-md-6">
-        <h3>Gestión de unidades</h3>
+        <h3>Gestión de paquetes</h3>
     </div>
     <div class="col-md-6 text-right">
-        <a class="btn btn-info" href="{{route('unidad.create')}}">Agregar una unidad</a> 
+        <a class="btn btn-info" href="{{route('paquete.create')}}">Agregar un paquete</a> 
         <br>
         <br>
     </div>

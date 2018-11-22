@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
+ <link href="{{asset('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
 
 
             <div>
@@ -18,49 +18,93 @@
                @endif
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Crea una nueva unidad</div>
-                <div class="panel-body">
-                   <div class="row">
-                       <div class="col-md-12">
-                              <form style="padding-left:10px;padding-right: 10px" action="{{route('unidad.store')}}" method="post" class="form-horizontal" id="frmNew">
-                                   <div class="col-md-12">
-                                      <div class="form-group">
-                                        <label for="nombre">Nombre de Unidad</label>          
-                                        <input type="text" name="nameT" class="form-control" required="">
-                                    </div> 
-                                   </div>
-                                    <div class="col-md-12">
-                                       <div class="form-group">
-                                        <label for="nombre">Descripcion</label>           
-                                        <!--<textarea name="descT" class="ckeditor" required=""></textarea>-->
-                                        <textarea name="descT" class="form-control" required=""></textarea>
-                                    </div> 
-                                    </div>
-                                    
-                                    
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                        <label for="capacidad">Capacidad</label>          
-                                        <input type="number" name="capaT" class="form-control" required="">
-                                    </div>
-                                    </div>
-                                    <div class="col-md-6 text-right">
-                                        <br>
-                                        <div class="form-group">
-                                        <label for=""></label>           
-                                        <input type="submit" name="newT" class="btn btn-success" value="Guardar" id="btnNew">
-                                    </div>
-                                    </div>
+            
 
-                                    
-                                    {{csrf_field()}}
-                                </form>
-                       </div>
-                   </div>
-              </div>
-        </div>
+
+      <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>NUEVO PAQUETE</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form class="form-horizontal">
+                                <p>Agrega un paquete para poder generar compras</p>
+
+                                <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
+                                    <div class="col-lg-10"><input type="text" id="titulo" class="form-control"> 
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group"><label class="col-lg-2 control-label">Slug</label>
+                                    <div class="col-lg-10"><input type="text" readonly="" id="slug" class="form-control"> 
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                   <label class="col-lg-2 control-label">Estado</label>
+                                    <div class="col-lg-4">
+                                      <select class="select2_demo_1 form-control" name="estado">
+                                        <option value="Publicado">Publicado</option>
+                                        <option value="Completado">Completado</option>
+                                        <option value="Borrador">Borrador</option>
+                                    </select>
+                                    </div>
+                                    <label class="col-lg-2 control-label">Cupo</label>
+                                    <div class="col-lg-4">
+                                      <input type="number" class="form-control" name="cupo">
+                                      <input type="hidden" name="stock" value="0">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="data_1">
+                                <label class="col-lg-2 control-label">Fecha de viaje</label>
+                                <div class="col-lg-4 ">
+                                   <div class="input-group date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014"></div>
+                                </div>
+                                <label class="col-lg-2 control-label">Guia</label>
+                                    <div class="col-lg-4">
+                                      <select class="select2_demo_1 form-control" name="guia">
+                                         @foreach($guias as $key => $guia)
+                                            <option value="{{$guia->id}}">{{$guia->nombre}}{{$guia->apellido}}</option>
+                                         @endforeach
+                                      </select>
+                                    </div>
+                               </div>
+
+
+
+ 
+
+
+
+                                <div class="form-group"><label class="col-lg-2 control-label">Password</label>
+                                    <div class="col-lg-10"> <textarea id="editor1"></textarea> </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <div class="i-checks"><label> <input type="checkbox"><i></i> Remember me </label></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-sm btn-white" type="submit">Sign in</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+
     </div>
 </div>
 </div>
@@ -70,33 +114,24 @@
 
 
 
-
-
+<script src="{{asset('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('vendor/slug/jquery.friendurl.js')}}"></script>
 <script>
-    CKEDITOR.config.height = 100;
-    CKEDITOR.config.width = 'auto';
-    CKEDITOR.config.uiColor = '#AADC6E';
-    /*$(function(){
-    //prueba ajax
-    $.ajaxSetup({
-         headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-    });
-    
-    $('#btnNew').click(function(e){
-        e.preventDefault();
-        var url = "";
-        $.ajax({
-           type:'post',
-           url:url,
-           data:$('#frmNew').serialize(),
-           success:function(result){
-               toastr.success(result);
-               console.log('exito');
-           }
-        });
-    });
-});*/   
+     CKEDITOR.replace( 'editor1' ); 
+
+     $('#titulo').friendurl({
+      id : 'slug'
+     });
+
+
+      $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
 </script>
 @endsection
 
