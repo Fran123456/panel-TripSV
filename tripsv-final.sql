@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2018 a las 23:44:43
+-- Tiempo de generación: 26-11-2018 a las 20:20:23
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -47,7 +47,7 @@ CREATE TABLE `compras` (
   `total` double(8,2) DEFAULT NULL,
   `estado` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `stockpago` double DEFAULT NULL,
-  `paquete_id` int(11) NOT NULL,
+  `paquete_id` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ubicacion_id` int(11) NOT NULL,
   `cliente_id` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `guias` (
 --
 
 INSERT INTO `guias` (`id`, `nombre`, `apellido`, `dui`, `img_profile`, `disponibilidad`, `created_at`, `updated_at`) VALUES
-(2, 'Frank', 'Navas', '446531-1', 'http://127.0.0.1:8000/image/OZksjvLBf6Q8o0LauINkYtddk3HfHGoOuhLIG5rw.png', 'Disponible', '2018-11-22 04:32:27', '2018-11-22 04:32:27');
+(1, 'Maria', 'Garcia', '4552246-2', 'http://127.0.0.1:8000/image/TuXrHIuxvY45Hl7jq1Q7sLH9kR4UM1wx12FGixKQ.png', 'Disponible', '2018-11-23 02:37:16', '2018-11-23 02:37:16');
 
 -- --------------------------------------------------------
 
@@ -135,8 +135,8 @@ CREATE TABLE `multimedia` (
   `id_multimedia` int(11) NOT NULL,
   `url` text COLLATE utf8mb4_unicode_ci,
   `tipo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `post_id` int(11) NOT NULL,
-  `paquete_id` int(11) NOT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `paquete_id` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -148,14 +148,16 @@ CREATE TABLE `multimedia` (
 --
 
 CREATE TABLE `paquetes` (
-  `id_paquete` int(11) NOT NULL,
-  `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_paquete` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `titulo` text COLLATE utf8mb4_unicode_ci,
+  `slug` text COLLATE utf8mb4_unicode_ci,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `estado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cupo` int(11) NOT NULL,
   `stock` int(11) NOT NULL,
-  `hora_partida` datetime NOT NULL,
-  `hora_regreso` datetime NOT NULL,
+  `fechaDeViaje` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hora_partida` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hora_regreso` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `guia_id` int(11) NOT NULL,
   `rutaTuristica_id` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `transporte_id` int(11) NOT NULL,
@@ -226,6 +228,13 @@ CREATE TABLE `transporte_models` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `transporte_models`
+--
+
+INSERT INTO `transporte_models` (`id`, `nombre`, `descripcion`, `capacidad`, `created_at`, `updated_at`) VALUES
+(1, 'Microbus #1', 'Microbus color rojo, con aire acondicionado.', 30, '2018-11-23 02:24:50', '2018-11-23 02:24:50');
+
 -- --------------------------------------------------------
 
 --
@@ -282,7 +291,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `rol`, `img`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'USUARIO1', 'navasfran98@gmail.com', 'admin', 'perfil/sonic.png', '$2y$10$lRIckK86/x1Wdh19TWUzeOpMBjd0UJD2kS..2hjxnTAgtW454hD6a', 'jYGIRmtX5TE0emGgzSl1e9f3Na9bxGUPZ82pRKBOr6GT35S9L5ZZwPmz7wtf', '2018-11-19 03:14:02', '2018-11-19 06:44:17');
+(1, 'Frank Navas', 'navasfran98@gmail.com', 'admin', 'perfil/pvz2.png', '$2y$10$lRIckK86/x1Wdh19TWUzeOpMBjd0UJD2kS..2hjxnTAgtW454hD6a', 'ltabB9jo6pdDiQtZRfBQgYVeuVZWo0cqezKGjumtRDkau7qM2rAZqdJaBfg6', '2018-11-19 03:14:02', '2018-11-23 02:24:11'),
+(2, 'USUARIO2', 'user2@gmail.com', 'admin', 'perfil/sonic.png', '$2y$10$lRIckK86/x1Wdh19TWUzeOpMBjd0UJD2kS..2hjxnTAgtW454hD6a', 'cQvlNi9Wsq20bTDPRjx4dkSXcRPx78wRG6EMv1BZyn0tYtrgk2vBd1Y8g0vF', '2018-11-19 03:14:02', '2018-11-19 06:44:17');
 
 --
 -- Índices para tablas volcadas
@@ -333,10 +343,9 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `multimedia`
   ADD PRIMARY KEY (`id_multimedia`),
-  ADD UNIQUE KEY `post_id` (`post_id`),
-  ADD KEY `multimedia_post_id_index` (`post_id`),
   ADD KEY `multimedia_paquete_id_index` (`paquete_id`),
-  ADD KEY `paquete_id` (`paquete_id`);
+  ADD KEY `paquete_id` (`paquete_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indices de la tabla `paquetes`
@@ -421,7 +430,7 @@ ALTER TABLE `comprobantes`
 -- AUTO_INCREMENT de la tabla `guias`
 --
 ALTER TABLE `guias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -434,12 +443,6 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `multimedia`
   MODIFY `id_multimedia` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `paquetes`
---
-ALTER TABLE `paquetes`
-  MODIFY `id_paquete` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `posts`
@@ -457,13 +460,13 @@ ALTER TABLE `transporte_models`
 -- AUTO_INCREMENT de la tabla `ubicacions`
 --
 ALTER TABLE `ubicacions`
-  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -473,9 +476,9 @@ ALTER TABLE `users`
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`paquete_id`) REFERENCES `paquetes` (`id_paquete`),
   ADD CONSTRAINT `compras_ibfk_2` FOREIGN KEY (`ubicacion_id`) REFERENCES `ubicacions` (`id_ubicacion`),
-  ADD CONSTRAINT `compras_ibfk_3` FOREIGN KEY (`cliente_id`) REFERENCES `turista_clientes` (`id_turista`);
+  ADD CONSTRAINT `compras_ibfk_3` FOREIGN KEY (`cliente_id`) REFERENCES `turista_clientes` (`id_turista`),
+  ADD CONSTRAINT `compras_ibfk_4` FOREIGN KEY (`paquete_id`) REFERENCES `paquetes` (`id_paquete`);
 
 --
 -- Filtros para la tabla `comprobantes`
@@ -487,7 +490,8 @@ ALTER TABLE `comprobantes`
 -- Filtros para la tabla `multimedia`
 --
 ALTER TABLE `multimedia`
-  ADD CONSTRAINT `multimedia_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id_post`);
+  ADD CONSTRAINT `multimedia_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id_post`),
+  ADD CONSTRAINT `multimedia_ibfk_2` FOREIGN KEY (`paquete_id`) REFERENCES `paquetes` (`id_paquete`);
 
 --
 -- Filtros para la tabla `paquetes`
