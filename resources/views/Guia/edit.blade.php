@@ -14,10 +14,6 @@
 
         <form action="{{route('updateGuia',$items->id)}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
-            <div class="form-group" id="fotogroup">
-              <div id="divfoto"><label id="labelfoto">Foto de perfil:</label></div>
-              <input type="file" name="image">
-            </div>
             
             <div class="form-group">
               <div id="divnombre"><label id="labelname">Nombre:</label></div>
@@ -31,7 +27,7 @@
             
             <div class="form-group">
               <div id="divdui"><label id="labeldui">Dui:</label></div>
-              <input type="text" name="dui" class="form-control" value="{{$items->dui}}" pattern="[0-9]{9}" title="Debe contener 9 numeros">
+              <input type="text" name="dui" class="form-control" value="{{$items->dui}}" pattern="^[0-9]{8}-[0-9]{1}$" title="Use este formato 00000000-0">
             </div>
             
             

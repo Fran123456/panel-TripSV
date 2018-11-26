@@ -19,7 +19,7 @@ class GuiaTuristicosController extends Controller
      */
     public function index()
     {
-    $items = \App\Guia::all();
+        $items = Guia::all();
 
         return view('Guia.Guia', compact('items'));
     }
@@ -107,22 +107,37 @@ class GuiaTuristicosController extends Controller
         $guide = Guia::find($id);
         
         $guide->nombre = $request['name'];
-        $guide->img_profile = $request['image'];
+        //$guide->img_profile = $request['image'];
         $guide->apellido = $request['apellido'];
         $guide->dui = $request['dui'];
         $guide->disponibilidad = $request['disponibilidad'];
         
         $guide->save();
         
+        
+        
+        
+        
+        return redirect()->route('guia.index',$guide->id)->with('msgU','Datos actualizados correctamente');
+
+    }
+    
+    public function viewfoto($id)
+    {
+        $guia = Guia::where('id',$id)->first();
+        return view('Guia.updateFoto', compact('guia'));
+    }
+
+    public function updateFoto(Request $request, $id)
+    {
+        $guia = Guia::find($id);
+        
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',$request->file('image'));
-            $guide->fill(['img_profile'=> asset($path)])->save();
+            $guia->fill(['img_profile'=> asset($path)])->save();
         }
         
-        
-        
-        return redirect()->route('guia.index')->with('msgU','Datos actualizados correctamente');
-
+        return redirect()->route('guia.index',$guia->id);
     }
 
     /**

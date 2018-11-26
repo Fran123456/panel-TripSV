@@ -61,7 +61,8 @@
               <div id="divapellido"><label id="labelapellido">Apellido:</label></div>
               {!! Form::text('apellido',null,['class'=>'form-control','placeholder'=>'Ingresa el Apellido','onchange'=>'validar();']) !!}
             </div>
-              <div class="form-group">
+              
+            <div class="form-group">
               <div id="divdui"><label id="labeldui">Dui:</label></div>
               {!! Form::text('dui',null,['class'=>'form-control','placeholder'=>'Ingresa el dui', 'onchange'=>'validar();']) !!}
             </div>
@@ -99,6 +100,7 @@
                      <th width="60px">Disponibilidad</th>
                      <th width="60px">Editar</th>
                      <th width="60px"> Eliminar</th>
+                     <th>Foto</th>
                   </tr>
                </thead>
                <tbody>
@@ -126,7 +128,7 @@
                                 {{ $item->disponibilidad }}
                             </td>                           
                             <td>
-                                <a href="{{route('guia.edit',$item->id)}}" class="btn btn-info">Actualizar</a> 
+                                <a href="{{route('guia.edit',$item->id)}}" class="btn btn-sm btn-info">Actualizar</a> 
                             </td>                          
                             <td>
                                 {!! Form::open(['route' => ['guia.destroy', $item->id], 'method' => 'DELETE']) !!}
@@ -134,6 +136,9 @@
                                             Eliminar
                                         </button>                           
                                 {!! Form::close() !!}
+                            </td>
+                            <td style="text-align: center">
+                                <a href="{{route('foto',$item->id)}}" class="btn btn-success"><span class="fa fa-camera"></span></a>
                             </td>
                         </tr>
                         @endforeach

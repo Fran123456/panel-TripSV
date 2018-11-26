@@ -46,4 +46,6 @@ route::post('/updatePerfil/{id}','user\perfilController@update')->name('updatePe
 //guia turistico
 Route::resource('guia', 'Guia\GuiaTuristicosController');
 route::post('/updateGuia/{id}','Guia\GuiaTuristicosController@update')->name('updateGuia');
+route::get('/foto/{id}','Guia\GuiaTuristicosController@viewfoto')->name('foto');
+route::post('/updateFoto/{id}','Guia\GuiaTuristicosController@updateFoto')->name('updateFoto');
 //guia turistico
