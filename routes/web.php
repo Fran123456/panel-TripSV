@@ -22,7 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
 //unidades
 route::resource('unidad','transporte\transporteController');
 route::post('/updateUnidad/{id}','transporte\transporteController@update')->name('updateUnidad');

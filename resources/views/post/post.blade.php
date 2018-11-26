@@ -22,10 +22,10 @@
 
     
     <div class="col-md-6">
-        <h3>Gestión de paquetes</h3>
+        <h3>Gestión de blog</h3>
     </div>
     <div class="col-md-6 text-right">
-        <a class="btn btn-info" href="{{route('paquete.create')}}">Agregar un paquete</a> 
+        <a class="btn btn-info" href="{{route('blog.create')}}">Agregar a blog</a> 
         <br>
         <br>
     </div>
@@ -33,26 +33,23 @@
     <table class="table table-bordered table-hover table-striped" id="unidades">
         <thead>
             <tr class="">
-                <th>No</th>
+                <th width="60">N°</th>
                 <th>Titulo</th>
-                <th>Cupo</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th width="100">Editar</th>
+                <th width="100">Eliminar</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($paquete as $key => $tran)
+            @foreach($post as $key => $value)
             <tr>
                 <td>{{$key +1}}</td>
-                <td>{{$tran->nombre}}</td>
-                <td>{!!$tran->descripcion!!}</td>
-                <td>{{$tran->capacidad}}</td>
+                <td>{{$value->titulo}}</td>
                 <td>
-                    <a class="btn btn-info" href="{{route('unidad.edit',$tran->id)}}">Editar</a>
+                    <a class="btn btn-info" href="{{route('unidad.edit',$value->id)}}">Editar</a>
                     
                 </td>
                 <td>
-                    {!! Form::open(['route' => ['unidad.destroy', $tran->id], 'method' => 'DELETE']) !!}
+                    {!! Form::open(['route' => ['unidad.destroy', $value->id], 'method' => 'DELETE']) !!}
                                         <button onclick="return confirm('Estas seguro de Eliminar este Registro')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>                           
@@ -63,7 +60,7 @@
         </tbody>
         
     </table>
-    {{$paquete->render()}}
+    {{$post->render()}}
 </div>
 
 
