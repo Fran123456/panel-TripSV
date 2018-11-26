@@ -101,7 +101,9 @@
                       </div>
                   </li>
 
-
+                   <li>
+                    <a href="{{route('home')}}"><i class="fa fa-home" aria-hidden="true"></i> <span class="nav-label">Dashboard</span></a>
+                   </li>
 
                    <li>
                     <a href="{{route('unidad.index')}}"><i class="fa fa-plus-square" aria-hidden="true"></i> <span class="nav-label">Unidades</span></a>
