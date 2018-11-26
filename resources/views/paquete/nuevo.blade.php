@@ -2,7 +2,7 @@
 
 @section('content')
  <link href="{{asset('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
-
+<link href="{{asset('css/plugins/clockpicker/clockpicker.css')}}" rel="stylesheet">
 
 <div class="container">
     <div class="row">
@@ -63,6 +63,7 @@
                                     </div>
                                 </div>
 
+
                                 <div class="form-group" id="data_1">
                                 <label class="col-lg-2 control-label">Fecha de viaje</label>
                                 <div class="col-lg-4 ">
@@ -72,31 +73,87 @@
                                     <div class="col-lg-4">
                                       <select class="select2_demo_1 form-control" name="guia">
                                          @foreach($guias as $key => $guia)
-                                            <option value="{{$guia->id}}">{{$guia->nombre}}{{$guia->apellido}}</option>
+                                            <option value="{{$guia->id}}">{{$guia->nombre}} {{$guia->apellido}}</option>
                                          @endforeach
                                       </select>
                                     </div>
                                </div>
 
 
+                                <div class="form-group" id="data_1">
+                                <label class="col-lg-2 control-label">Hora de partida</label>
+                                <div class="col-lg-4 ">
+                                    <div class="input-group clockpicker" data-autoclose="true">
+                                      <input type="text" class="form-control" name="hora_partida" value="08:00" >
+                                      <span class="input-group-addon">
+                                          <span class="fa fa-clock-o"></span>
+                                      </span>
+                                     </div>
+                                </div>
+                                <label class="col-lg-2 control-label">Hora de regreso</label>
+                                    <div class="col-lg-4">
+                                       <div class="input-group clockpicker" data-autoclose="true">
+                                        <input type="text" class="form-control" name="hora_regreso" value="20:00" >
+                                          <span class="input-group-addon">
+                                           <span class="fa fa-clock-o"></span>
+                                         </span>
+                                       </div>
+                                      </div>
+                               </div>
 
- 
+                                <div class="form-group" id="data_1">
+                                <label class="col-lg-2 control-label">Usuario:</label>
+                                <div class="col-lg-4 ">
+                                   <input type="text" readonly="" name="user" class="form-control" value="{{Auth::user()->name}}">
+                                </div>
+                                <label class="col-lg-2 control-label">Unidad de trasporte</label>
+                                    <div class="col-lg-4">
+                                      <select class="select2_demo_1 form-control" name="guia">
+                                         @foreach($transporte as $key => $value)
+                                            <option value="{{$value->id}}">{{$value->nombre}} - capacidad: {{$value->capacidad}}</option>
+                                         @endforeach
+                                      </select>
+                                    </div>
+                               </div>
 
 
-
-                                <div class="form-group"><label class="col-lg-2 control-label">Password</label>
+                                <div class="form-group"><label class="col-lg-2 control-label">Cuerpo</label>
                                     <div class="col-lg-10"> <textarea id="editor1"></textarea> </div>
                                 </div>
+
+                                <hr>
+                                <h3>Ruta turistica</h3>
+                                <div class="form-group"><label class="col-lg-2 control-label">Titulo ruta</label>
+                                <div class="col-md-10"><input type="text" class="form-control" name="titulo_ruta"></div></div>
+
                                 <div class="form-group">
-                                    <div class="col-lg-offset-2 col-lg-10">
-                                        <div class="i-checks"><label> <input type="checkbox"><i></i> Remember me </label></div>
+                                   <label class="col-lg-2 control-label">Latitud inicial</label>
+                                    <div class="col-lg-4">
+                                      <input type="text" class="form-control" name="lati_inicial">
+                                    </div>
+                                    <label class="col-lg-2 control-label">Longitud inicial</label>
+                                    <div class="col-lg-4">
+                                      <input type="text" class="form-control" name="long_inicial">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <div class="col-lg-offset-2 col-lg-10">
-                                        <button class="btn btn-sm btn-white" type="submit">Sign in</button>
+                                   <label class="col-lg-2 control-label">Latitud final</label>
+                                    <div class="col-lg-4">
+                                      <input type="text" class="form-control" name="lati_final">
+                                    </div>
+                                    <label class="col-lg-2 control-label">Longitud final</label>
+                                    <div class="col-lg-4">
+                                      <input type="text" class="form-control" name="long_final">
                                     </div>
                                 </div>
+
+                                 <div class="form-group"><label class="col-lg-2 control-label">Descripción ruta</label>
+                                    <div class="col-lg-10"> <textarea id="editor2"></textarea> </div>
+                                </div>
+                                
+                               
+
                             </form>
                         </div>
                     </div>
@@ -117,8 +174,10 @@
 <script src="{{asset('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 <script src="{{asset('vendor/slug/jquery.friendurl.js')}}"></script>
+<script src="{{asset('js/plugins/clockpicker/clockpicker.js')}}"></script>
 <script>
      CKEDITOR.replace( 'editor1' ); 
+     CKEDITOR.replace( 'editor2' ); 
 
      $('#titulo').friendurl({
       id : 'slug'
@@ -132,6 +191,8 @@
                 calendarWeeks: true,
                 autoclose: true
             });
+
+      $('.clockpicker').clockpicker();
 </script>
 @endsection
 

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\paquete;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\paquete as package;
-use App\Guia;
-
+use App\Guia ;
+use App\transporte_model as tran;
 class PaqueteController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class PaqueteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {     
           $paquete = package::orderBy('id','asc')->paginate(10);
           return view('paquete.paquete', compact('paquete'));
     }
@@ -27,8 +27,9 @@ class PaqueteController extends Controller
      */
     public function create()
     {
+        $transporte =tran::get();
         $guias = Guia::where('disponibilidad', 'Disponible')->get();
-        return view('paquete.nuevo', compact('guias'));
+        return view('paquete.nuevo', compact('guias', 'transporte'));
     }
 
     /**
