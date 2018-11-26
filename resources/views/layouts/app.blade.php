@@ -39,6 +39,11 @@
      <script src="{{asset('js/plugins/blueimp/jquery.blueimp-gallery.min.js')}}"></script>
 
 
+     <link href="{{asset('css/plugins/select2/select2.min.css')}}" rel="stylesheet">
+
+
+
+
 
 <!--PLANTILLA------------------------------------------------------------------------>
 
@@ -105,8 +110,12 @@
 
                     <a href="{{route('guia.index')}}"><i class="fa fa-laptop"></i> <span class="nav-label">Guia turistico</span></a>
 
-                   </li>
+                    </li>
                     <li><a href="{{route('usuario.index')}}"><i class="fa fa-user" aria-hidden="true"></i> Usuarios</a></li>
+
+
+                    </li>
+                    <li><a href="{{route('paquete.index')}}"><i class="fa fa-user" aria-hidden="true"></i>Paquetes</a></li>
 
                    
 

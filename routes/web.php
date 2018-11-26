@@ -49,3 +49,10 @@ route::post('/updateGuia/{id}','Guia\GuiaTuristicosController@update')->name('up
 route::get('/foto/{id}','Guia\GuiaTuristicosController@viewfoto')->name('foto');
 route::post('/updateFoto/{id}','Guia\GuiaTuristicosController@updateFoto')->name('updateFoto');
 //guia turistico
+
+
+
+//guia paquetes
+Route::resource('paquete', 'paquete\PaqueteController');
+route::post('/paqueteUpdate/{id}','paquete\PaqueteControllerr@update')->name('paqueteUpdate');
+//guia paquetes
