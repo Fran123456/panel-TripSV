@@ -56,3 +56,11 @@ route::post('/updateFoto/{id}','Guia\GuiaTuristicosController@updateFoto')->name
 Route::resource('paquete', 'paquete\PaqueteController');
 route::post('/paqueteUpdate/{id}','paquete\PaqueteControllerr@update')->name('paqueteUpdate');
 //guia paquetes
+
+
+
+
+//guia post
+Route::resource('blog', 'post\PostController');
+route::post('/updateblog/{id}','post\PostController@update')->name('updateblog');
+//guia post

@@ -120,6 +120,9 @@
                     
                     <li><a href="{{route('paquete.index')}}"><i class="fa fa-map-o" aria-hidden="true"></i><span class="nav-label">Paquetes</span></a></li>
 
+
+                   <li><a href="{{route('paquete.index')}}"><i class="fa fa-text-height" aria-hidden="true"></i><span class="nav-label">Post</span></a></li>
+
                    
 
 
