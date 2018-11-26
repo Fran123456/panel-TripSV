@@ -4,6 +4,8 @@ namespace App\Http\Controllers\post;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\post;
+use App\Categoria;
 
 class PostController extends Controller
 {
@@ -13,8 +15,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $post = post::paginate(10);
+        return view('post.post', compact('post'));
     }
 
     /**
@@ -23,8 +25,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   $categorias = Categoria::get();
+        return view('post.nuevo', compact('categorias'));
     }
 
     /**
