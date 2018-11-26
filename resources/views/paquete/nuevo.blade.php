@@ -33,7 +33,7 @@
                         </div>
                         <div class="ibox-content">
                             <form class="form-horizontal">
-                                <p>Agrega un paquete para poder generar compras</p>
+                                <p>Agregar un paquete para poder generar compras</p>
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
                                     <div class="col-lg-10"><input type="text" id="titulo" class="form-control"> 
@@ -152,8 +152,11 @@
                                     <div class="col-lg-10"> <textarea id="editor2"></textarea> </div>
                                 </div>
                                 
-                               
-
+                                <div class="form-group">
+                                    <input type="submit" name="" class="btn btn-primary" value="Guardar">
+                                </div>
+                                
+                              
                             </form>
                         </div>
                     </div>

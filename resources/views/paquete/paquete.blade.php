@@ -34,9 +34,8 @@
         <thead>
             <tr class="">
                 <th>No</th>
-                <th>Nombre de Unidad</th>
-                <th>Descripcion</th>
-                <th>Capacidad</th>
+                <th>Titulo</th>
+                <th>Cupo</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
