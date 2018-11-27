@@ -102,7 +102,13 @@ class PaqueteController extends Controller
      */
     public function show($id)
     {
-        //
+          $paquete =  package::where('id_paquete',$id)->first();
+          $transporte =tran::get();
+          $guias = Guia::where('disponibilidad', 'Disponible')->get();
+          $ruta = ruta_turistica::where('id_ruta', $paquete->rutaTuristica_id)->first();
+
+          $select =  $this->select_estado($paquete->estado);
+          return view('paquete.show', compact('paquete', 'select', 'transporte', 'guias', 'ruta'));
     }
 
     /**
@@ -138,5 +144,22 @@ class PaqueteController extends Controller
     {
         package::find($id)->delete();
         return back()->with('msgD','Item eliminado con exito');
+    }
+
+
+    public function select_estado($option){
+        $variableSelect ="";
+        $valores = array(
+           'Publicado', 'Completado','Borrador'
+        );
+        for ($i=0; $i <3 ; $i++) { 
+            if($option == $valores[$i]){
+                $variableSelect= $variableSelect . "<option selected value='".$option."'>".$option."</option>";
+            }else{
+                 $variableSelect= $variableSelect. "<option value='".$valores[$i]."'>".$valores[$i]."</option>";
+            }
+        }
+
+        return $variableSelect;
     }
 }
