@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\multimedia;
 use App\paquete as package;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class MultimediaController extends Controller
 {
@@ -16,6 +17,14 @@ class MultimediaController extends Controller
      */
     public function index()
     {   $multimedia1 = multimedia::paginate(10);
+
+        
+      /* $multimedia1 = DB::table('multimedia')
+            ->join('paquetes', 'multimedia.paquete_id', '=', 'paquetes.id_paquete')
+            ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
+            ->select('multimedia.*', 'paquetes.titulo', 'posts.titulo')
+            ->get();*/
+
         return view('multimedia.multimedia', compact('multimedia1'));
     }
 

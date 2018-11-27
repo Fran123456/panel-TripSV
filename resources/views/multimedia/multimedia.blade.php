@@ -102,7 +102,7 @@
                                     <a class="play-pause"></a>
                                     <ol class="indicator"></ol>
                                    </div>
-    {{$multimedia1->render()}}
+   
 </div>
 
 
