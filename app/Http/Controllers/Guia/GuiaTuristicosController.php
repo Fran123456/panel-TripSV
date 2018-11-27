@@ -114,10 +114,7 @@ class GuiaTuristicosController extends Controller
         
         $guide->save();
         
-        
-        
-        
-        
+
         return redirect()->route('guia.index',$guide->id)->with('msgU','Datos actualizados correctamente');
 
     }
