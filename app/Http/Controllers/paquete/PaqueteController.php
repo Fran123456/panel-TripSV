@@ -135,6 +135,7 @@ class PaqueteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        package::find($id)->delete();
+        return back()->with('msgD','Item eliminado con exito');
     }
 }
