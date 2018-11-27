@@ -129,6 +129,8 @@
 
                    <li><a href="{{route('blog.index')}}"><i class="fa fa-rss-square" aria-hidden="true"></i><span class="nav-label">Blog</span></a></li>
 
+                   <li><a href="{{route('multimedia.index')}}"><i class="fa fa-file-image-o" aria-hidden="true"></i><span class="nav-label">Multimedia</span></a></li>
+
                    
 
 

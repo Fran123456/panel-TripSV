@@ -63,3 +63,9 @@ route::post('/paqueteUpdate/{id}','paquete\PaqueteControllerr@update')->name('pa
 Route::resource('blog', 'post\PostController');
 route::post('/updateblog/{id}','post\PostController@update')->name('updateblog');
 //guia post
+
+
+//guia post
+Route::resource('multimedia', 'Multimedia\MultimediaController');
+route::post('/updatemultimedia/{id}','post\PostController@update')->name('updatemultimedia');
+//guia post
