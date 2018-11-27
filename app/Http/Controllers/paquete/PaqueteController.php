@@ -10,6 +10,7 @@ use App\User;
 use App\transporte_model as tran;
 use App\ruta_turistica;
 use Illuminate\Support\Facades\Auth;
+
 class PaqueteController extends Controller
 {
     /**
