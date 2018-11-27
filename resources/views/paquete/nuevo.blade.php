@@ -105,7 +105,7 @@
                                 <div class="form-group" id="data_1">
                                 <label class="col-lg-2 control-label">Usuario:</label>
                                 <div class="col-lg-4 ">
-                                   <input type="text" readonly="" name="user" class="form-control" value="{{Auth::user()->name}}">
+                                   <input type="text" readonly="" name="user" class="form-control" value="{{Auth::user()->id}}">
                                 </div>
                                 <label class="col-lg-2 control-label">Unidad de trasporte</label>
                                     <div class="col-lg-4">
