@@ -30,7 +30,7 @@
         <br>
     </div>
     
-    <table class="table table-bordered table-hover table-striped" id="unidades">
+    <table class="table table-bordered table-hover table-striped" id="paquete">
         <thead>
             <tr class="">
                 <th>No</th>

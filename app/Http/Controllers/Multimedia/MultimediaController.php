@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Multimedia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\multimedia;
+use App\paquete as package;
 
 class MultimediaController extends Controller
 {
@@ -25,6 +26,7 @@ class MultimediaController extends Controller
     public function create()
     {
         //
+        return view('multimedia.nuevo');
     }
 
     /**
@@ -81,5 +83,10 @@ class MultimediaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function get_paquetes(){
+      $paquetes = package::get();
+      json_encode($paquetes);
     }
 }
