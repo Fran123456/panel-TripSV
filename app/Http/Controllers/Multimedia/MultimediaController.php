@@ -23,10 +23,9 @@ class MultimediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
-        return view('multimedia.nuevo');
+       // return view('multimedia.nuevo');
     }
 
     /**
@@ -88,5 +87,10 @@ class MultimediaController extends Controller
     public function get_paquetes(){
       $paquetes = package::get();
       json_encode($paquetes);
+    }
+
+
+    public function multimedia_paquete($id){
+        return view('multimedia.nuevo');
     }
 }

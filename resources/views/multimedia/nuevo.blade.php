@@ -68,7 +68,7 @@
 </div>
 
 <script type="text/javascript">
-  
+
 
       videoHTML = '<div id="videoURL">'+
         '<label class="col-lg-2 control-label">Url video</label>'+
@@ -119,9 +119,6 @@
        $('#padre').append(videoHTML);
      }
    //fin
-
-
-   
 
 
 

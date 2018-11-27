@@ -67,6 +67,9 @@ route::post('/updateblog/{id}','post\PostController@update')->name('updateblog')
 
 //guia multimedia
 Route::resource('multimedia', 'Multimedia\MultimediaController');
+
+route::get('/create-multimedia/{id}','Multimedia\MultimediaController@multimedia_paquete')->name('createmultimedia');
+
 route::post('/updatemultimedia/{id}','Multimedia\MultimediaController@update')->name('updatemultimedia');
 route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name('getpaquetes');
 
