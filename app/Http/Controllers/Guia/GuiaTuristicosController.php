@@ -53,7 +53,8 @@ class GuiaTuristicosController extends Controller
         
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',$request->file('image'));
-            $guide->fill(['img_profile'=> asset($path)])->save();
+           // $guide->fill(['img_profile'=> asset($path)])->save();
+            $guide->fill(['img_profile'=> $path])->save();
         }
         
        return redirect()->route('guia.index')->with('msgN','Registro Agregado correctamente');

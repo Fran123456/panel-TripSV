@@ -74,3 +74,7 @@ route::post('/updatemultimedia/{id}','Multimedia\MultimediaController@update')->
 route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name('getpaquetes');
 
 //guia multimedia
+
+
+//noty
+Route::get('/notify', 'noty\NotificationController@index')->name('noty');

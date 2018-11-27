@@ -37,7 +37,7 @@
                 <th width="60">N°</th>
                 <th>Multimedia</th>
                 <th>Tipo</th>
-               
+                <th>Paquete</th>
                 <th width="160">Eliminar</th>
             </tr>
         </thead>
@@ -77,7 +77,7 @@
                 @endif
 
                 <td>{{$value->tipox}}</td>             
-                
+                <td>{{$value->titulo}}</td>
                 
                 <td>
                     {!! Form::open(['route' => ['multimedia.destroy', $value->id], 'method' => 'DELETE']) !!}
