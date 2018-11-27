@@ -41,18 +41,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($paquete as $key => $tran)
+            @foreach($paquete as $key => $pack)
             <tr>
                 <td>{{$key +1}}</td>
-                <td>{{$tran->nombre}}</td>
-                <td>{!!$tran->descripcion!!}</td>
-                <td>{{$tran->capacidad}}</td>
+                <td>{{$pack->titulo}}</td>
+                <td>{!!$pack->cupo!!}</td>
                 <td>
-                    <a class="btn btn-info" href="{{route('unidad.edit',$tran->id)}}">Editar</a>
+                    <a class="btn btn-sm btn-info" href="{{route('paquete.edit',$pack->id)}}">Editar</a>
                     
                 </td>
                 <td>
-                    {!! Form::open(['route' => ['unidad.destroy', $tran->id], 'method' => 'DELETE']) !!}
+                    {!! Form::open(['route' => ['paquete.destroy', $pack->id], 'method' => 'DELETE']) !!}
                                         <button onclick="return confirm('Estas seguro de Eliminar este Registro')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>                           
