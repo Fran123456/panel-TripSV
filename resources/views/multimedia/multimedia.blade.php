@@ -25,19 +25,27 @@
         <h3>Gestión de blog</h3>
     </div>
     <div class="col-md-6 text-right">
-        <a class="btn btn-info" href="{{route('blog.create')}}">Agregar a blog</a> 
+
+        <a class="btn btn-info" href="{{route('multimedia.create')}}">Agregar multimedia</a> 
+        <br>
+
         <br>
         <br>
     </div>
     
-    <table class="table table-bordered table-hover table-striped" id="unidades">
+
+    <table class="table table-bordered table-hover table-striped" id="multimedia">
+
         <thead>
             <tr class="">
                 <th width="60">N°</th>
                 <th>Multimedia</th>
-                <th width="190">Editar información</th>
-                <th width="190">Cambio de multimedia</th>
-                <th width="190">Eliminar</th>
+
+                <th>Tipo</th>
+                <th width="160">Editar información</th>
+                <th width="160">Cambio de multimedia</th>
+                <th width="160">Eliminar</th>
+
             </tr>
         </thead>
         <tbody>
@@ -45,7 +53,10 @@
             <tr>
                 <td>{{$key +1}}</td>
                 <td><div class="lightBoxGallery"><a title="Image from Unsplash" href="{{ $value->url }}" data-gallery=""><img height="60px" width="60px" src="{{ $value->url }}"></a>
-                                   </div></td>
+
+                                   </div></td> 
+                <td>{{$value->tipo}}</td>             
+
                 <td>
                     <a class="btn btn-info" href="{{route('unidad.edit',$value->id)}}">Editar</a>
                  

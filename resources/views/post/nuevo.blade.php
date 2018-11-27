@@ -31,26 +31,26 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form class="form-horizontal">
-
+                            <form class="form-horizontal" action="{{route('blog.store')}}" method="post" >
+                              {{ csrf_field() }}
                                 <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
-                                    <div class="col-lg-10"><input type="text" id="titulo" class="form-control"> 
+                                    <div class="col-lg-10"><input type="text" name="titulo" id="titulo" class="form-control"> 
                                     </div>
                                 </div>
 
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Slug</label>
-                                    <div class="col-lg-10"><input type="text" readonly="" id="slug" class="form-control"> 
+                                    <div class="col-lg-10"><input type="text" name="slug" readonly="" id="slug" class="form-control"> 
                                     </div>
                                 </div>
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Cuerpo</label>
-                                    <div class="col-lg-10"> <textarea id="editor1"></textarea> </div>
+                                    <div class="col-lg-10"> <textarea id="editor1" name="editor1"></textarea> </div>
                                 </div>
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Categoria</label>
                                     <div class="col-lg-4">
-                                      <select class="form-control">
+                                      <select name="categoria" class="form-control">
                                        @foreach($categorias as $value)
                                         <option value="{{$value->id_categoria}}">{{ $value->categoria }}</option>
                                        @endforeach

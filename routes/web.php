@@ -66,10 +66,13 @@ route::post('/updateblog/{id}','post\PostController@update')->name('updateblog')
 
 
 
-
-
-
-//guia post
+//guia multimedia
 Route::resource('multimedia', 'Multimedia\MultimediaController');
-route::post('/updatemultimedia/{id}','post\PostController@update')->name('updatemultimedia');
-//guia post
+
+route::get('/create-multimedia/{id}','Multimedia\MultimediaController@multimedia_paquete')->name('createmultimedia');
+
+route::post('/updatemultimedia/{id}','Multimedia\MultimediaController@update')->name('updatemultimedia');
+route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name('getpaquetes');
+
+//guia multimedia
+

@@ -32,17 +32,22 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form class="form-horizontal">
+
+                               <form class="form-horizontal" action="{{route('paquete.store')}}" method="post">
+                                {{ csrf_field() }}
                                 <p>Agregar un paquete para poder generar compras</p>
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
-                                    <div class="col-lg-10"><input type="text" id="titulo" class="form-control"> 
+                                <div class="col-lg-10"><input type="text" name="titulo" id="titulo" class="form-control"> 
+
                                     </div>
                                 </div>
 
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Slug</label>
-                                    <div class="col-lg-10"><input type="text" readonly="" id="slug" class="form-control"> 
+
+                                    <div class="col-lg-10"><input type="text" readonly="" name="slug" id="slug" class="form-control"> 
+
                                     </div>
                                 </div>
 
@@ -67,7 +72,9 @@
                                 <div class="form-group" id="data_1">
                                 <label class="col-lg-2 control-label">Fecha de viaje</label>
                                 <div class="col-lg-4 ">
-                                   <div class="input-group date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014"></div>
+
+                                   <div class="input-group date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" name="fechaViaje" class="form-control" value="03/04/2014"></div>
+
                                 </div>
                                 <label class="col-lg-2 control-label">Guia</label>
                                     <div class="col-lg-4">
@@ -104,11 +111,13 @@
                                 <div class="form-group" id="data_1">
                                 <label class="col-lg-2 control-label">Usuario:</label>
                                 <div class="col-lg-4 ">
-                                   <input type="text" readonly="" name="user" class="form-control" value="{{Auth::user()->name}}">
+
+                                   <input type="text" readonly="" name="user" class="form-control" value="{{Auth::user()->id}}">
                                 </div>
                                 <label class="col-lg-2 control-label">Unidad de trasporte</label>
                                     <div class="col-lg-4">
-                                      <select class="select2_demo_1 form-control" name="guia">
+                                      <select class="select2_demo_1 form-control" name="transporte">
+
                                          @foreach($transporte as $key => $value)
                                             <option value="{{$value->id}}">{{$value->nombre}} - capacidad: {{$value->capacidad}}</option>
                                          @endforeach
@@ -118,7 +127,9 @@
 
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Cuerpo</label>
-                                    <div class="col-lg-10"> <textarea id="editor1"></textarea> </div>
+
+                                    <div class="col-lg-10"> <textarea id="editor1" name="body"></textarea> </div>
+
                                 </div>
 
                                 <hr>
@@ -149,7 +160,9 @@
                                 </div>
 
                                  <div class="form-group"><label class="col-lg-2 control-label">Descripción ruta</label>
-                                    <div class="col-lg-10"> <textarea id="editor2"></textarea> </div>
+
+                                     <div class="col-lg-10"> <textarea id="editor2" name="descripcion"></textarea> </div>
+
                                 </div>
                                 
                                 <div class="form-group">
