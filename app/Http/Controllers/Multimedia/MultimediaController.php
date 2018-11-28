@@ -18,14 +18,14 @@ class MultimediaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $multimedia1 = multimedia::paginate(10);
+    {  // $multimedia1 = multimedia::paginate(10);
 
         
-      /* $multimedia1 = DB::table('multimedia')
+       $multimedia1 = DB::table('multimedia')
             ->join('paquetes', 'multimedia.paquete_id', '=', 'paquetes.id_paquete')
-            ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
-            ->select('multimedia.*', 'paquetes.titulo', 'posts.titulo')
-            ->get();*/
+           // ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
+            ->select('multimedia.*', 'paquetes.titulo')
+            ->get();
 
         return view('multimedia.multimedia', compact('multimedia1'));
     }
@@ -63,7 +63,8 @@ class MultimediaController extends Controller
         
                         if($request->file('img')){
                           $path = Storage::disk('public')->put('resourceMultimedia',$request->file('img'));
-                         $guide->fill(['url'=> asset($path)])->save();
+                        // $guide->fill(['url'=> asset($path)])->save();
+                          $guide->fill(['url'=> $path])->save();
                       }
         }else{
                      $guide = multimedia::create([

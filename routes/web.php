@@ -76,3 +76,8 @@ route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name(
 
 //guia multimedia
 
+
+
+//noty
+Route::get('/notify', 'noty\NotificationController@index')->name('noty');
+
