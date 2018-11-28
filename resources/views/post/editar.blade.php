@@ -23,29 +23,38 @@
                 <div class="panel-body">
                    <div class="row">
                        <div class="col-md-12">
-                              <form style="padding-left:20px;padding-right: 20px" action="{{route('updateUnidad',$transp->id)}}" method="post" class="form-horizontal">
-                                {{csrf_field()}}
-                                    <div class="form-group">
-                                        <label for="nombre">Nombre de Unidad</label>          
-                                        <input type="text" name="nameT" class="form-control" required="" value="{{$transp->nombre}}">
+             <form class="form-horizontal" action="{{route('updateblog',$postb->id)}}" method="post" >
+                              {{ csrf_field() }}
+                                <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
+                                    <div class="col-lg-10"><input type="text" name="titulo" id="titulo" class="form-control" value="{{ $postb->titulo }}" > 
                                     </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="nombre">Descripcion</label>           
-                                        <textarea name="descT" class="form-control" required="">{{$transp->descripcion}}</textarea>
+                                </div>
+
+
+                                <div class="form-group"><label class="col-lg-2 control-label">Slug</label>
+                                    <div class="col-lg-10"><input type="text" name="slug" readonly="" id="slug" class="form-control" value="{{ $postb->slug }}" > 
                                     </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="capacidad">Capacidad</label>          
-                                        <input type="number" name="capaT" class="form-control" required="" value="{{$transp->capacidad}}">
+                                </div>
+
+                                <div class="form-group"><label class="col-lg-2 control-label">Cuerpo</label>
+                                    <div class="col-lg-10"> <textarea id="editor1" name="editor1" value="" >{{ $postb->body}}</textarea> </div>
+                                </div>
+
+                                <div class="form-group"><label class="col-lg-2 control-label">Categoria</label>
+                                    <div class="col-lg-4">
+                                      <select name="categoria" class="form-control"  >
+                                        
+                                       @foreach($categorias as $value)
+                                        <option value="{{$value->id_categoria}}">{{ $value->categoria }}</option>
+                                       @endforeach
+                                      </select>
+                                     
                                     </div>
-                                    
-                                    <div class="form-group">
-                                        <label for=""></label>           
-                                        <input type="submit" name="newT" class="btn btn-success" value="Guardar">
-                                    </div>
-                                    
-                                </form>
+
+                                    <button type="submit" class="btn btn-success">Enviar</button>
+                                </div>
+
+                            </form>
                        </div>
                    </div>
               </div>
@@ -54,7 +63,19 @@
 </div>
 </div>
 
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+<script src="{{asset('vendor/slug/jquery.friendurl.js')}}"></script>
 
+<script>
+     CKEDITOR.replace( 'editor1' );  
+
+     $('#titulo').friendurl({
+      id : 'slug'
+     });
+
+
+     
+</script>
 
 
 

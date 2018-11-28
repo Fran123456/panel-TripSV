@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\paquete;
 
 use Illuminate\Http\Request;
@@ -143,6 +142,7 @@ class PaqueteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        package::find($id)->delete();
+        return back()->with('msgD','Item eliminado con exito');
     }
 }
