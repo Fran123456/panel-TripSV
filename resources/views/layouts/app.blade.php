@@ -131,6 +131,8 @@
 
                    <li><a href="{{route('multimedia.index')}}"><i class="fa fa-file-image-o" aria-hidden="true"></i><span class="nav-label">Multimedia paquetes</span></a></li>
 
+                    <li><a href="{{route('multimedia-post')}}"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="nav-label">Multimedia blog</span></a></li>
+
                    
 
 

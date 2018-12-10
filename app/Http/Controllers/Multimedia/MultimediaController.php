@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Multimedia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\multimedia;
-
 use App\paquete as package;
+use App\post;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +30,16 @@ class MultimediaController extends Controller
         return view('multimedia.multimedia', compact('multimedia1'));
     }
 
+    public function index2(){
+         $multimedia1 = DB::table('multimedia')
+            ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
+           // ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
+            ->select('multimedia.*', 'posts.titulo')
+            ->get();
+
+        return view('multimedia.multimediaPost', compact('multimedia1'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,33 +60,35 @@ class MultimediaController extends Controller
      */
     public function store(Request $request)
     {
+      $r = package::where('id_paquete',$request['idpaquete'])->first();
+      $respuesta = 0;
+      if($r == null){
+        $respuesta = 1;
+      }
 
+         
 
-       if($request['centinelatipo'] == "imagen"){
-                    
-                      $guide = multimedia::create([
-                        'url'=>$request->file('img'),
-                        'tipox' => 'imagen',
-                        'paquete_id'=>$request['idpaquete']
-
-                       ]);
-        
-                        if($request->file('img')){
-                          $path = Storage::disk('public')->put('resourceMultimedia',$request->file('img'));
-                        // $guide->fill(['url'=> asset($path)])->save();
-                          $guide->fill(['url'=> $path])->save();
-                      }
-        }else{
-                     $guide = multimedia::create([
+        if($respuesta == 0){
+              $guide = multimedia::create([
                         'url'=>$request['url'],
-                        'tipox' => 'video',
+                        'tipox' => $request['seleccion'],
                         'paquete_id'=>$request['idpaquete']
                       ]);
-                     $guide->save();
-           
+              $guide->save();
+              return redirect()->route('multimedia.index')->with('msgN','Registro Agregado correctamente');
         }
-        
-       return redirect()->route('multimedia.index')->with('msgN','Registro Agregado correctamente');
+        elseif($respuesta==1)
+        {
+              $guide = multimedia::create([
+                        'url'=>$request['url'],
+                        'tipox' => $request['seleccion'],
+                        'post_id'=>$request['idpaquete']
+                      ]);
+              $guide->save();
+              return redirect()->route('multimedia-post')->with('msgN','Registro Agregado correctamente');
+        }
+       
+       
     }
 
     /**
@@ -130,7 +142,14 @@ class MultimediaController extends Controller
 
     public function multimedia_paquete($id){
         $paquete  = package::where('id_paquete',$id)->first();
-        return view('multimedia.nuevo', compact('paquete'));
+        $va = 0;
+
+        if($paquete == null){
+           $paquete = post::where('id_post', $id)->first();
+           $va = 1;
+        }
+        return view('multimedia.nuevo', compact('paquete','va'));
     }
+
 
 }
