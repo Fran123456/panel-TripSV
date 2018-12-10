@@ -65,6 +65,7 @@ route::post('/updateblog/{id}','post\PostController@update')->name('updateblog')
 //guia post
 
 
+
 //guia multimedia
 Route::resource('multimedia', 'Multimedia\MultimediaController');
 
@@ -76,5 +77,7 @@ route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name(
 //guia multimedia
 
 
+
 //noty
 Route::get('/notify', 'noty\NotificationController@index')->name('noty');
+

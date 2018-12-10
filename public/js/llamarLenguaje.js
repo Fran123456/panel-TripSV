@@ -106,6 +106,7 @@ $("#usuarios").dataTable({
 
               
           ],
+
     });
 
 
@@ -186,4 +187,5 @@ $("#multimedia").dataTable({
 
               
           ],
+
     });

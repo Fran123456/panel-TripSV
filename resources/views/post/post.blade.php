@@ -45,11 +45,11 @@
                 <td>{{$key +1}}</td>
                 <td>{{$value->titulo}}</td>
                 <td>
-                    <a class="btn btn-info" href="{{route('unidad.edit',$value->id)}}">Editar</a>
+                    <a class="btn btn-info" href="{{route('blog.edit',$value->id)}}">Editar</a>
                     
                 </td>
                 <td>
-                    {!! Form::open(['route' => ['unidad.destroy', $value->id], 'method' => 'DELETE']) !!}
+                    {!! Form::open(['route' => ['blog.destroy', $value->id], 'method' => 'DELETE']) !!}
                                         <button onclick="return confirm('Estas seguro de Eliminar este Registro')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>                           

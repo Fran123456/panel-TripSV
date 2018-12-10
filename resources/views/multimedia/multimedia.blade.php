@@ -25,20 +25,28 @@
         <h3>Gestión de multimedia</h3>
     </div>
     <div class="col-md-6 text-right">
+
      
+
         <br>
+
         <br>
         <br>
     </div>
+
    
+
     <table class="table table-bordered table-hover table-striped" id="multimedia">
+
         <thead>
             <tr class="">
                 <th width="60">N°</th>
                 <th>Multimedia</th>
+
                 <th>Tipo</th>
                 <th>Paquete</th>
                 <th width="160">Eliminar</th>
+
             </tr>
         </thead>
         <tbody>
@@ -46,7 +54,9 @@
             <tr>
                 <td>{{$key +1}}</td>
 
+
                 @if($value->tipox =="imagen")
+
                 <td>
                     <div class="lightBoxGallery"><a title="Image from Unsplash" href="{{ $value->url }}" data-gallery=""><img height="60px" width="60px" src="{{ $value->url }}"></a></div>
                 </td>

@@ -14,7 +14,7 @@ class CreateRutaTuristicasTable extends Migration
     public function up()
     {
         Schema::create('ruta_turisticas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id_ruta');
             $table->float('longitud');
             $table->float('latitud');
             $table->text('img_destino',400);

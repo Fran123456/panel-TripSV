@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\post;
 use App\Categoria;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -37,7 +38,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $postb= new post();
+        $postb->titulo= $request->titulo;
+        $postb->slug=$request->slug;
+        $postb->body=$request->editor1;
+        $postb->categoria_id=$request->categoria;
+        $postb->user_id=Auth::user()->id;
+        $postb->save();
+        return redirect()->route('blog.index')->with('msgN','Unidad agregada correctamente');
+
+
     }
 
     /**
@@ -59,7 +69,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+    $categorias = Categoria::get();
+    $postb=post::where('id',$id)->first();
+    return view('post.editar',compact('postb','categorias'));
     }
 
     /**
@@ -71,8 +83,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $postb=post::find($id);
+        $postb->titulo= $request->titulo;
+        $postb->slug=$request->slug;
+        $postb->body=$request->editor1;
+        $postb->categoria_id=$request->categoria;
+        $postb->user_id=Auth::user()->id;
+        $postb->save();
+
+        return redirect()->route('blog.index',$postb->id)->with('msgN','Post actualizado correctamente');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -82,6 +103,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+     $del= post::find($id)->delete();
+     return back()->with('msgN','Post eliminado con exito');
     }
 }

@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\paquete;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\paquete as package;
 use App\Guia ;
+
 use App\User;
 use App\transporte_model as tran;
 use App\ruta_turistica;
@@ -20,7 +20,9 @@ class PaqueteController extends Controller
      */
     public function index()
     {     
+
           $paquete = package::orderBy('id_paquete','asc')->paginate(10);
+
           return view('paquete.paquete', compact('paquete'));
     }
 
@@ -33,8 +35,10 @@ class PaqueteController extends Controller
     {
         $transporte =tran::get();
         $guias = Guia::where('disponibilidad', 'Disponible')->get();
+
         $user = User::get();
         return view('paquete.nuevo', compact('guias', 'transporte','user'));
+
     }
 
     /**
@@ -45,6 +49,7 @@ class PaqueteController extends Controller
      */
     public function store(Request $request)
     {
+
         $pack = new package();
         $ruta = new ruta_turistica();
         
@@ -94,6 +99,7 @@ class PaqueteController extends Controller
     }
     
    
+
     /**
      * Display the specified resource.
      *

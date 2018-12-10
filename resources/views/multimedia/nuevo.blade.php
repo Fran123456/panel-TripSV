@@ -2,12 +2,14 @@
 
 @section('content')
 
+
 <style type="text/css">
   .cont{
     padding-left: 40px;
     padding-right: 40px;
   }
 </style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -27,7 +29,9 @@
 
           <div class="ibox float-e-margins">
                         <div class="ibox-title">
+
                             <h5>Multimedia al paquete "{{ $paquete->titulo}}"</h5>
+
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -36,9 +40,11 @@
                             </div>
                         </div>
                         <div class="ibox-content">
+
                             <form  class="form-horizontal" action="{{route('multimedia.store')}}" method="post" enctype="multipart/form-data">
                               {{ csrf_field() }}
                                 <div class="form-group">
+
                                     <label class="col-lg-2 control-label">Tipo multimedia</label>
                                     <div class="col-lg-4">
                                      <select onchange="desicionTipo();" id="def" class="form-control"><option value="imagen">imagen</option><option value="video">video URL</option></select> 
@@ -55,12 +61,14 @@
                                           </div>
                                      </div>
                                 </div>
+
                                  <input type="hidden" value="{{$paquete->id_paquete}}" name="idpaquete">
                                 <div class="form-group">
                                   <div class="col-lg-4 text-right">
                                     <button type="submit" class="btn btn-info">Agregar</button>
                                   </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -138,6 +146,7 @@
   }
 
 </script>
+
 
 @endsection
 

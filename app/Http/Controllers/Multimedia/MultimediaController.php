@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Multimedia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\multimedia;
+
 use App\paquete as package;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+
 
 class MultimediaController extends Controller
 {
@@ -33,9 +35,11 @@ class MultimediaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create($id)
     {
        // return view('multimedia.nuevo');
+
     }
 
     /**
@@ -117,8 +121,10 @@ class MultimediaController extends Controller
      */
     public function destroy($id)
     {
+
         multimedia::find($id)->delete();
         return back()->with('supr','Elemento Eliminado correctamente');
+
     }
 
 
@@ -126,4 +132,5 @@ class MultimediaController extends Controller
         $paquete  = package::where('id_paquete',$id)->first();
         return view('multimedia.nuevo', compact('paquete'));
     }
+
 }
