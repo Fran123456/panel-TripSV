@@ -35,8 +35,10 @@
             <tr class="">
                 <th width="60">N°</th>
                 <th>Titulo</th>
+                <td width="100">Multimedia</td>
                 <th width="100">Editar</th>
                 <th width="100">Eliminar</th>
+
             </tr>
         </thead>
         <tbody>
@@ -44,16 +46,18 @@
             <tr>
                 <td>{{$key +1}}</td>
                 <td>{{$value->titulo}}</td>
+                 <td><a class="btn btn-sm btn-success" href="{{ url('/create-multimedia/'.$value->id_post) }}">Multimedia</a></td>
                 <td>
-                    <a class="btn btn-info" href="{{route('blog.edit',$value->id)}}">Editar</a>
+                    <a class="btn btn-info" href="{{route('blog.edit',$value->id_post)}}">Editar</a>
                     
                 </td>
+
                 <td>
                     {!! Form::open(['route' => ['blog.destroy', $value->id], 'method' => 'DELETE']) !!}
                                         <button onclick="return confirm('Estas seguro de Eliminar este Registro')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>                           
-                    {!! Form::close() !!}
+                    {!! Form::close() !!}</td>
             </tr>
             @endforeach
             

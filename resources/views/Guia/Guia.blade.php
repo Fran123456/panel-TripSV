@@ -5,23 +5,38 @@
 
 <div class="container">
 
-                    @if (session('supr'))
-                        <div class="alert alert-danger">
-                            {{ session('supr') }}
-                        </div>
-                    @endif
-                    
+
+                 <div>
+                    @if(session('supr'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     {{session('supr')}}
+                    </div>
+                   @endif
+                </div>
+
+                <div>
                     @if(session('msgU'))
-                    <div class="alert alert-info">
-                        {{session('msgU')}}
+                    <div class="alert alert-info alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     {{session('msgU')}}
                     </div>
-                    @endif
-                    
+                   @endif
+                </div>
+
+
+                <div>
                     @if(session('msgN'))
-                    <div class="alert alert-success">
-                        {{session('msgN')}}
+                    <div class="alert alert-info alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     {{session('msgN')}}
                     </div>
-                    @endif
+                   @endif
+                </div>
+
+
+                    
+                  
                     
                 <div class="col-md-6">
                   <h3>Gestión de guia turistico</h3>

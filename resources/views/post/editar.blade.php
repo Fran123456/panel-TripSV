@@ -3,12 +3,9 @@
 @section('content')
 
 
-
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-
-
+        <div class="col-md-12">
             <div>
                @if(session('info'))
                <div class="alert alert-success alert-dismissible" role="alert">
@@ -18,12 +15,23 @@
                @endif
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Mi perfil</div>
-                <div class="panel-body">
-                   <div class="row">
-                       <div class="col-md-12">
-             <form class="form-horizontal" action="{{route('updateblog',$postb->id)}}" method="post" >
+
+         
+         
+      <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Edita un blog</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+
+         
+             <form class="form-horizontal" action="{{route('updateblog',$postb->id_post)}}" method="post" >
                               {{ csrf_field() }}
                                 <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
                                     <div class="col-lg-10"><input type="text" name="titulo" id="titulo" class="form-control" value="{{ $postb->titulo }}" > 
@@ -55,10 +63,13 @@
                                 </div>
 
                             </form>
-                       </div>
-                   </div>
-              </div>
-        </div>
+
+                        </div>
+                    </div>
+
+
+
+        
     </div>
 </div>
 </div>

@@ -1,16 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
-    <a href="{{route('guia.index')}}" class="btn btn-primary">Vover Atras</a>
-</div>
-<hr>
-<div class="panel panel-default  col-md-6">
-    <div class="panel-heading">
-        <h3>Edicion de Datos</h3>
-    </div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
     
-    <div class="panel-body">
+
+<div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>NUEVO GUIA</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                               
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+
+
 
         <form action="{{route('updateGuia',$items->id)}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
@@ -27,7 +37,7 @@
             
             <div class="form-group">
               <div id="divdui"><label id="labeldui">Dui:</label></div>
-              <input type="text" name="dui" class="form-control" value="{{$items->dui}}" pattern="^[0-9]{8}-[0-9]{1}$" title="Use este formato 00000000-0">
+              <input type="text" name="dui" class="form-control" value="{{$items->dui}}">
             </div>
             
             
@@ -48,10 +58,7 @@
                                         @endif
                                       @endfor
                     
-                    
-                    
-                    
-                    
+  
                 </select>
             </div>
 
@@ -60,11 +67,11 @@
                 <input type="submit" class="btn btn-info" value="Guardar cambios">
             </div>
        </form>
-</div>
+   </div>
+                    </div>
 
 
-<div class="container">
-    
-</div>
+</div></div></div>
+
 @endsection
 

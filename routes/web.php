@@ -61,7 +61,7 @@ route::post('/paqueteUpdate/{id}','paquete\PaqueteControllerr@update')->name('pa
 
 //guia post
 Route::resource('blog', 'post\PostController');
-route::post('/updateblog/{id}','post\PostController@update')->name('updateblog');
+route::post('updateblog/{id}','post\PostController@updateblog')->name('updateblog');
 //guia post
 
 
@@ -73,6 +73,8 @@ route::get('/create-multimedia/{id}','Multimedia\MultimediaController@multimedia
 
 route::post('/updatemultimedia/{id}','Multimedia\MultimediaController@update')->name('updatemultimedia');
 route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name('getpaquetes');
+
+route::get('multimedia-post','Multimedia\MultimediaController@index2')->name('multimedia-post');
 
 //guia multimedia
 

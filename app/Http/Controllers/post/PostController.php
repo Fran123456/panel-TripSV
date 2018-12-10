@@ -70,7 +70,7 @@ class PostController extends Controller
     public function edit($id)
     {
     $categorias = Categoria::get();
-    $postb=post::where('id',$id)->first();
+    $postb=post::where('id_post',$id)->first();
     return view('post.editar',compact('postb','categorias'));
     }
 
@@ -83,7 +83,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $postb=post::find($id);
+        $postb=post::find($id);
         $postb->titulo= $request->titulo;
         $postb->slug=$request->slug;
         $postb->body=$request->editor1;
@@ -91,7 +91,7 @@ class PostController extends Controller
         $postb->user_id=Auth::user()->id;
         $postb->save();
 
-        return redirect()->route('blog.index',$postb->id)->with('msgN','Post actualizado correctamente');
+        return redirect()->route('blog.index')->with('msgN','Post actualizado correctamente');
     }
 
 
@@ -106,4 +106,20 @@ class PostController extends Controller
      $del= post::find($id)->delete();
      return back()->with('msgN','Post eliminado con exito');
     }
+
+
+    public function updateblog(Request $request, $id)
+    {
+          post::where('id_post', $id)
+          ->update(
+            ['titulo' => $request->titulo],
+            ['slug' => $request->slug],
+            ['body' => $request->editor1],
+            ['categoria_id' => $request->categoria]);
+
+        return redirect()->route('blog.index')->with('msgN','Post actualizado correctamente');
+    }
+
+
+
 }
