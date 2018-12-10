@@ -10,6 +10,6 @@ class ruta_turistica extends Model
     protected $fillable = [
 		'id_ruta',   
         'longitudInicial', 	'latitudInicial',    'latitudfinal',  'longitudfinal',	'img_destino', 	'titulo', 	'descripcion'];
-    protected $guarded = ['id'];
+    protected $guarded = ['id_ruta'];
 }
 

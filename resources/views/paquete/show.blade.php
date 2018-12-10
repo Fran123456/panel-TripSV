@@ -23,7 +23,7 @@
 
       <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>PAQUETE - {{$paquete->titulo}}</h5>
+                            <h5>PAQUETE - {{$paquete->titulo}}</h5> 
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -32,12 +32,12 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                               <form class="form-horizontal" action="{{route('paquete.store')}}" method="post">
+                            <form action="{{route('paqueteUpdate',$paquete->id_paquete,$ruta->id_ruta)}}" method="post" class="form-horizontal">
                                 {{ csrf_field() }}
 
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
-                                <div class="col-lg-10"><input type="text" name="titulo" id="titulo" readonly value="{{$paquete->titulo}}" class="form-control"> 
+                                    <div class="col-lg-10"><input type="text" name="titulo" id="titulo" readonly value="{{$paquete->titulo}}" class="form-control" required=""> 
                                     </div>
                                 </div>
 
@@ -51,13 +51,13 @@
                                 <div class="form-group">
                                    <label class="col-lg-2 control-label">Estado</label>
                                     <div class="col-lg-4">
-                                      <select class="form-control" disabled="" name="estado">
+                                      <select class="form-control" disabled="" name="estado" id="estado">
                                       {!! $select  !!}}
                                       </select>
                                     </div>
                                     <label class="col-lg-2 control-label">Cupo</label>
                                     <div class="col-lg-4">
-                                      <input type="number" readonly="" class="form-control" value="{{$paquete->cupo}}" name="cupo">
+                                       <input type="number" readonly="" class="form-control" value="{{$paquete->cupo}}" name="cupo" id="cupo">
                                       <input type="hidden" name="stock" {{$paquete->stock}} value="0">
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="form-group" id="data_1">
                                 <label class="col-lg-2 control-label">Fecha de viaje</label>
                                 <div class="col-lg-4 ">
-                                   <div class="input-group date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span><input readonly="" type="text" name="fechaViaje" class="form-control" value="{{$paquete->fechaDeViaje}}"></div>
+                                    <div class="input-group date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span><input disabled="" type="text" id="fecha_viaje" name="fechaViaje" class="form-control" value="{{$paquete->fechaDeViaje}}"></div>
                                 </div>
                                 <label class="col-lg-2 control-label">Guia</label>
                                     <div class="col-lg-4">
@@ -87,7 +87,7 @@
                                 <label class="col-lg-2 control-label">Hora de partida</label>
                                 <div class="col-lg-4 ">
                                     <div class="input-group clockpicker" data-autoclose="true">
-                                      <input readonly="" type="text" class="form-control" name="hora_partida" value="{{$paquete->hora_partida}}" >
+                                        <input disabled="" type="text" class="form-control" name="hora_partida" id="hora_partida" value="{{$paquete->hora_partida}}" >
                                       <span class="input-group-addon">
                                           <span class="fa fa-clock-o"></span>
                                       </span>
@@ -96,7 +96,7 @@
                                 <label class="col-lg-2 control-label">Hora de regreso</label>
                                     <div class="col-lg-4">
                                        <div class="input-group clockpicker" data-autoclose="true">
-                                        <input readonly="" type="text" class="form-control" name="hora_regreso" value="{{$paquete->hora_regreso}}" >
+                                           <input disabled="" type="text" class="form-control" name="hora_regreso" id="hora_regreso" value="{{$paquete->hora_regreso}}" >
                                           <span class="input-group-addon">
                                            <span class="fa fa-clock-o"></span>
                                          </span>
@@ -133,22 +133,22 @@
                                 <div class="form-group">
                                    <label class="col-lg-2 control-label">Latitud inicial</label>
                                     <div class="col-lg-4">
-                                      <input value="{{$ruta->latitudInicial}}" readonly="" type="text" class="form-control" name="lati_inicial">
+                                        <input value="{{$ruta->latitudInicial}}" readonly="" type="text" class="form-control" name="lati_inicial" id="lat_inicial">
                                     </div>
                                     <label class="col-lg-2 control-label">Longitud inicial</label>
                                     <div class="col-lg-4">
-                                      <input  value="{{$ruta->longitudInicial}}" readonly="" type="text" class="form-control" name="long_inicial">
+                                        <input  value="{{$ruta->longitudInicial}}" readonly="" type="text" class="form-control" name="long_inicial" id="long_inicial">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                    <label class="col-lg-2 control-label">Latitud final</label>
                                     <div class="col-lg-4">
-                                      <input value="{{$ruta->latitudfinal}}" readonly="" type="text" class="form-control" name="lati_final">
+                                        <input value="{{$ruta->latitudfinal}}" readonly="" type="text" class="form-control" name="lati_final" id="lat_final">
                                     </div>
                                     <label class="col-lg-2 control-label">Longitud final</label>
                                     <div class="col-lg-4">
-                                      <input value="{{$ruta->longitudfinal}}" readonly="" type="text" class="form-control" name="long_final">
+                                        <input value="{{$ruta->longitudfinal}}" readonly="" type="text" class="form-control" name="long_final" id="long_final">
                                     </div>
                                 </div>
 
@@ -157,7 +157,8 @@
                                 </div>
                                 
                                 <div class="form-group text-center">
-                                    <input disabled="" type="submit" name="" class="btn btn-primary" value="Guardar">
+                                    <input type="submit" name="guardar" id="guardar" class="btn btn-primary" value="Guardar" disabled="">
+                                    <input type="button" value="editar" class="btn btn-success" onclick="activarCampo()">
                                 </div>
                                 
                               
@@ -197,9 +198,29 @@
                 forceParse: false,
                 calendarWeeks: true,
                 autoclose: true
-            });
+        });
 
       $('.clockpicker').clockpicker();
+      
+      function activarCampo()
+      {
+          $('#titulo').removeAttr('readonly');
+          $('#estado').removeAttr('disabled');
+          $('#cupo').removeAttr('readonly');
+          $('#fecha_viaje').removeAttr('disabled');
+          $('#tguia').removeAttr('disabled');
+          $('#hora_partida').removeAttr('disabled');
+          $('#hora_regreso').removeAttr('disabled');
+          $('#transporte').removeAttr('disabled');
+          $('#editor1').removeAttr('disabled');
+          $('#titulo_ruta').removeAttr('readonly');
+          $('#lat_inicial').removeAttr('readonly');
+          $('#long_inicial').removeAttr('readonly');
+          $('#lat_final').removeAttr('readonly');
+          $('#long_final').removeAttr('readonly');
+          $('#editor2').removeAttr('disabled');
+          $('#guardar').removeAttr('disabled');
+      }
 </script>
 @endsection
 
