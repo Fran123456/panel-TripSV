@@ -53,7 +53,7 @@ route::post('/updateFoto/{id}','Guia\GuiaTuristicosController@updateFoto')->name
 
 //guia paquetes
 Route::resource('paquete', 'paquete\PaqueteController');
-route::post('/paqueteUpdate/{id}','paquete\PaqueteControllerr@update')->name('paqueteUpdate');
+route::post('/paqueteUpdate/{id}','paquete\PaqueteController@update')->name('paqueteUpdate');
 //guia paquetes
 
 

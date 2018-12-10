@@ -112,7 +112,7 @@ class PaqueteController extends Controller
           $transporte =tran::get();
           $guias = Guia::where('disponibilidad', 'Disponible')->get();
           $ruta = ruta_turistica::where('id_ruta', $paquete->rutaTuristica_id)->first();
-
+          
           $select =  $this->select_estado($paquete->estado);
           return view('paquete.show', compact('paquete', 'select', 'transporte', 'guias', 'ruta'));
     }
@@ -137,7 +137,32 @@ class PaqueteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ruta = ruta_turistica::find($id);
+             
+        $ruta->titulo = $request->titulo_ruta;
+        $ruta->latitudInicial = $request->lati_inicial;
+        $ruta->longitudInicial = $request->long_inicial;
+        $ruta->latitudfinal = $request->lati_final;
+        $ruta->longitudfinal = $request->long_final;
+        $ruta->descripcion = $request->descripcion;
+        $ruta->save();
+
+        $pack = package::find($id);
+        
+        $pack->titulo = $request->titulo;
+        $pack->slug = $request->slug;
+        $pack->body = $request->body;
+        $pack->estado = $request->estado;
+        $pack->cupo = $request->cupo;
+        $pack->stock = $request->stock;
+        $pack->fechaDeViaje = $request->fechaViaje;
+        $pack->hora_partida = $request->hora_partida;
+        $pack->hora_regreso = $request->hora_regreso;
+        $pack->guia_id = $request->guia;
+        $pack->transporte_id = $request->transporte;
+        $pack->save();
+        
+        return redirect()->route('paquete.index');
     }
 
     /**
