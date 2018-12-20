@@ -2,9 +2,9 @@
 
 namespace App\Charts;
 
-use ConsoleTVs\Charts\Classes\Chartjs\Chart;
+use ConsoleTVs\Charts\Classes\Frappe\Chart;
 
-class categoria extends Chart
+class categoriasChart extends Chart
 {
     /**
      * Initializes the chart.

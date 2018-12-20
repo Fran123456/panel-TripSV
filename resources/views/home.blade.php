@@ -9,7 +9,7 @@
 
 @section('content')
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"
+
 </head>
 <div class="container">
     <div class="row">
@@ -54,11 +54,19 @@
     </div>
 </div>
 <hr>
-<h2 style="text-align: center;">Cantidad de Post por Categoria</h2>
+<h2 style="text-align: center;">Guias con mas Viajes Hechos</h2>
 <div class="container">
     <div class="row">
-        <div style="height: 250px;">
+        <div>
             {!! $chart->container() !!}
+        </div>
+        <hr>
+        <div>
+            <h2 style="text-align: center;">Rutas mas Visitadas&nbsp;<span style="font-size: 15px;">(Año 2018)</span></h2>
+            {!! $ruta->container() !!}
+        </div>
+        <div>
+            
         </div>
     </div>
 </div>
@@ -70,8 +78,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
 {!! $chart->script() !!}
+{!! $ruta->script() !!}
+
+<script type="text/javascript">
+   
+</script>
 
 <script src="{{asset('CLNDR-master/src/clndr.js')}}"></script>
 <script src="{{asset('CLNDR-master/demo/demo.js')}}"></script>

@@ -21,8 +21,8 @@ class PaqueteController extends Controller
     public function index()
     {     
 
-          $paquete = package::orderBy('id_paquete','asc')->paginate(10);
-
+          $paquete = package::get();
+          
           return view('paquete.paquete', compact('paquete'));
     }
 
@@ -174,6 +174,7 @@ class PaqueteController extends Controller
     public function destroy($id)
     {
         package::find($id)->delete();
+
         return back()->with('msgD','Item eliminado con exito');
     }
 
