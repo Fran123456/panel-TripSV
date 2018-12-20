@@ -54,8 +54,25 @@
                                     <label class="col-lg-2 control-label">Tipo multimedia</label>
                                     <div class="col-lg-4">
                                      <select name="seleccion"class="form-control">
-                                      <option  value="imagen">imagen URL</option>
-                                      <option value="video">video URL</option></select> 
+                                    
+                                      @if($va == 0)<!--paquete-->
+                                        <option  value="imagen">Imagen URL</option>
+                                        <option value="video">video URL</option>
+                                        <option value="caruselHome">Carusel URL</option>
+                                         <option value="imagenReserva">Imagen reserva URL</option>
+                                         <option value="topES">Top URL</option>
+                                      @elseif($va == 1)
+                                          <option  value="imagen">Imagen URL</option>
+                                        <option value="video">video URL</option>
+                                        <option value="imagenReserva">Imagen reserva URL</option>
+                                        <option value="imgListaPost">Imagen lista post URL</option>
+                                      @else
+                                      <option value="banerMural">Banner URL</option>
+                                      <option value="imgVideoHome">Banner URL</option>
+                                      <option value="videoHome">Video home URL</option>
+                                      <option value="portadaListaPost">Portada</option>
+                                      @endif
+                                    </select> 
                                     </div>
                                     <input type="hidden" name="centinelatipo" value="imagen" id="centinelatipo">
                                 </div>

@@ -141,12 +141,14 @@ class MultimediaController extends Controller
 
 
     public function multimedia_paquete($id){
+        
         $paquete  = package::where('id_paquete',$id)->first();
         $va = 0;
 
         if($paquete == null){
-           $paquete = post::where('id_post', $id)->first();
+           $paquete = post::where('id', $id)->first();
            $va = 1;
+           
         }
         return view('multimedia.nuevo', compact('paquete','va'));
     }
