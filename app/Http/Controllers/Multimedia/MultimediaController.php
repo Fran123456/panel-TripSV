@@ -32,7 +32,7 @@ class MultimediaController extends Controller
 
     public function index2(){
          $multimedia1 = DB::table('multimedia')
-            ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
+            ->join('posts', 'multimedia.post_id', '=', 'posts.id')
            // ->join('posts', 'multimedia.post_id', '=', 'posts.id_post')
             ->select('multimedia.*', 'posts.titulo')
             ->get();

@@ -31,7 +31,7 @@
                         <div class="ibox-content">
 
          
-             <form class="form-horizontal" action="{{route('updateblog',$postb->id_post)}}" method="post" >
+             <form class="form-horizontal" action="{{route('updateblog',$postb->id)}}" method="post" >
                               {{ csrf_field() }}
                                 <div class="form-group"><label class="col-lg-2 control-label">Titulo</label>
                                     <div class="col-lg-10"><input type="text" name="titulo" id="titulo" class="form-control" value="{{ $postb->titulo }}" > 

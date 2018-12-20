@@ -46,9 +46,9 @@
             <tr>
                 <td>{{$key +1}}</td>
                 <td>{{$value->titulo}}</td>
-                 <td><a class="btn btn-sm btn-success" href="{{ url('/create-multimedia/'.$value->id_post) }}">Multimedia</a></td>
+                 <td><a class="btn btn-sm btn-success" href="{{ url('/create-multimedia/'.$value->id) }}">Multimedia</a></td>
                 <td>
-                    <a class="btn btn-info" href="{{route('blog.edit',$value->id_post)}}">Editar</a>
+                    <a class="btn btn-info" href="{{route('blog.edit',$value->id)}}">Editar</a>
                     
                 </td>
 

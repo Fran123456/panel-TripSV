@@ -70,7 +70,7 @@ class PostController extends Controller
     public function edit($id)
     {
     $categorias = Categoria::get();
-    $postb=post::where('id_post',$id)->first();
+    $postb=post::where('id',$id)->first();
     return view('post.editar',compact('postb','categorias'));
     }
 
@@ -110,7 +110,7 @@ class PostController extends Controller
 
     public function updateblog(Request $request, $id)
     {
-          post::where('id_post', $id)
+          post::where('id', $id)
           ->update(
             ['titulo' => $request->titulo],
             ['slug' => $request->slug],
