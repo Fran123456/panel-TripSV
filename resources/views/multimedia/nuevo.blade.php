@@ -72,7 +72,7 @@
                                   @if($va == 0)
                                  <input type="hidden" value="{{$paquete->id_paquete}}" name="idpaquete">
                                  @else
-                                <input type="text" value="{{$paquete->id_post}}" name="idpaquete">
+                                <input type="hidden" value="{{$paquete->id_post}}" name="idpaquete">
                                  @endif
 
                                 <div class="form-group">
