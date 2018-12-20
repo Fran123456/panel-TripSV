@@ -54,7 +54,6 @@
                 
                 <td>
                     {!! Form::open(['route' => ['paquete.destroy', $pack->id_paquete], 'method' => 'DELETE']) !!}
-
                                         <button onclick="return confirm('Estas seguro de Eliminar este Registro')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>                           
@@ -66,7 +65,6 @@
         </tbody>
         
     </table>
-    {{$paquete->render()}}
 </div>
 
 

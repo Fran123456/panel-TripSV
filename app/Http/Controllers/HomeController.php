@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Charts\categoriasChart;
+use App\Charts\RutasChart;
+use App\ruta_turistica;
+use App\paquete;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,29 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //Guias con mas Viajes Hechos
+        $packM = paquete::where('guia_id','=',1)->count();
+        $packE = paquete::where('guia_id','=',3)->count();
+        $packJ = paquete::where('guia_id','=',2)->count();
+        
+        $chart = new categoriasChart();
+        $chart->labels(['Maria','Ever','Juan']);
+        $chart->dataset('Categoria','bar',[$packM,$packE,$packJ]);
+        $chart->loaderColor('#B7EB95');
+        //Guias con mas Viajes Hechos
+        
+        
+        //Rutas mas visitadas
+        $rutasOcc = ruta_turistica::where('titulo','=','occidente')->count();
+        $rutasOr = ruta_turistica::where('titulo','=','oriente')->count();
+        $rutasC = ruta_turistica::where('titulo','=','central')->count();
+        
+        $ruta = new RutasChart();
+        $ruta->labels(['Ruta a Occidente','Ruta a Oriente','Ruta a Zona Central']);
+        $ruta->dataset('Rutas Mas Visitadas','pie',[$rutasOcc,$rutasOr,$rutasC]);
+        $ruta->loaderColor('#B7EB95');
+        //Rutas mas visitadas
+        
+        return view('home', compact('chart','ruta'));
     }
 }

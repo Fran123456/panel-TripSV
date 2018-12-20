@@ -9,7 +9,7 @@
 
 @section('content')
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"
+
 </head>
 <div class="container">
     <div class="row">
@@ -54,10 +54,18 @@
     </div>
 </div>
 <hr>
-<h2 style="text-align: center;">Grafica para Categorias</h2>
+<h2 style="text-align: center;">Guias con mas Viajes Hechos</h2>
 <div class="container">
     <div class="row">
-        <div id="chart" style="height: 250px;">
+        <div>
+            {!! $chart->container() !!}
+        </div>
+        <hr>
+        <div>
+            <h2 style="text-align: center;">Rutas mas Visitadas&nbsp;<span style="font-size: 15px;">(Año 2018)</span></h2>
+            {!! $ruta->container() !!}
+        </div>
+        <div>
             
         </div>
     </div>
@@ -70,29 +78,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
+{!! $chart->script() !!}
+{!! $ruta->script() !!}
+
+<script type="text/javascript">
+   
+</script>
 
 <script src="{{asset('CLNDR-master/src/clndr.js')}}"></script>
 <script src="{{asset('CLNDR-master/demo/demo.js')}}"></script>
-
-<script type="text/javascript">
-new Morris.Line({
-   element:'chart',
-   
-   data:[
-       {year:'2008',  value:20},
-       { year: '2009', value: 10 },
-       { year: '2010', value: 5 },
-       { year: '2011', value: 5 },
-       { year: '2012', value: 20 }
-   ],
-   
-   xkey:'year',
-   ykeys:['value'],
-   labels:['value']
-});
-</script>
 
 @endsection
