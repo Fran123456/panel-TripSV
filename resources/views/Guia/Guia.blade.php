@@ -66,7 +66,7 @@
               {!! Form::open(['route'=>'guia.store','method'=> 'POST', 'id' => 'form', 'files'=>true])!!}
               <div class="form-group" id="fotogroup">
                 <div id="divfoto"><label id="labelfoto">Foto de perfil:</label></div>
-               {!!Form::file('image',null  , ['onchange'=>'validar();'])!!}
+               {!! Form::text('image',null,['class'=>'form-control','placeholder'=>'imng URL perfil guia' , 'onchange'=>'validar();']) !!}
               </div>
               <div class="form-group">
               <div id="divnombre"><label id="labelname">Nombre:</label></div>
@@ -115,7 +115,7 @@
                      <th width="60px">Disponibilidad</th>
                      <th width="60px">Editar</th>
                      <th width="60px"> Eliminar</th>
-                     <th>Foto</th>
+                  <!--   <th>Foto</th>-->
                   </tr>
                </thead>
                <tbody>
@@ -152,9 +152,9 @@
                                         </button>                           
                                 {!! Form::close() !!}
                             </td>
-                            <td style="text-align: center">
+                           <!-- <td style="text-align: center">
                                 <a href="{{route('foto',$item->id)}}" class="btn btn-success"><span class="fa fa-camera"></span></a>
-                            </td>
+                            </td>-->
                         </tr>
                         @endforeach
                     </tbody>
@@ -183,7 +183,7 @@
     function validar2(){
       cont = 0;
       
-        img = $('input:file[name=image]').val();
+        img = $('input:text[name=image]').val();
         if(img == ""){
            $('#labelfoto').remove();
            $('#divfoto').append('<label id="labelfoto">Foto de perfil:</label>');

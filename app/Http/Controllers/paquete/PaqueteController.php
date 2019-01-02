@@ -125,7 +125,18 @@ class PaqueteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $transporte =tran::get();
+        $guias = Guia::where('disponibilidad', 'Disponible')->get();
+
+
+         $dataPaquete = package::where('id_paquete', $id)->first();
+         $guiaPaquete = Guia::find($dataPaquete->guia_id);
+         $rutaPaquete = ruta_turistica::where('id_ruta', $dataPaquete->rutaTuristica_id)->first();
+         $trasportePaquete = tran::find($dataPaquete->transporte_id);
+
+      return view('paquete.edit', compact('guias', 'transporte' , 'dataPaquete','guiaPaquet','rutaPaquete','trasportePaquete
+
+        '));
     }
 
     /**
