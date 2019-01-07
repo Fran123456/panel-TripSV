@@ -4,7 +4,7 @@ namespace App\Charts;
 
 use ConsoleTVs\Charts\Classes\Frappe\Chart;
 
-class categoriasChart extends Chart
+class guiasChart extends Chart
 {
     /**
      * Initializes the chart.

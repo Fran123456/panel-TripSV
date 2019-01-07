@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Charts\categoriasChart;
+use App\Charts\guiasChart;
 use App\Charts\RutasChart;
+use App\Charts\unidadesChart;
 use App\ruta_turistica;
 use App\paquete;
 
@@ -32,9 +33,9 @@ class HomeController extends Controller
         $packE = paquete::where('guia_id','=',3)->count();
         $packJ = paquete::where('guia_id','=',2)->count();
         
-        $chart = new categoriasChart();
+        $chart = new guiasChart();
         $chart->labels(['Maria','Ever','Juan']);
-        $chart->dataset('Categoria','bar',[$packM,$packE,$packJ]);
+        $chart->dataset('Guias','bar',[$packM,$packE,$packJ]);
         $chart->loaderColor('#B7EB95');
         //Guias con mas Viajes Hechos
         
@@ -47,9 +48,21 @@ class HomeController extends Controller
         $ruta = new RutasChart();
         $ruta->labels(['Ruta a Occidente','Ruta a Oriente','Ruta a Zona Central']);
         $ruta->dataset('Rutas Mas Visitadas','pie',[$rutasOcc,$rutasOr,$rutasC]);
-        $ruta->loaderColor('#B7EB95');
+        $ruta->loaderColor('yellow');
         //Rutas mas visitadas
         
-        return view('home', compact('chart','ruta'));
+        //Unidades mas Preferidas
+        $unidad1 = paquete::where('transporte_id','=',1)->count();
+        $unidad2 = paquete::where('transporte_id','=',2)->count();
+        $unidad3 = paquete::where('transporte_id','=',3)->count();
+        
+        $unidad = new unidadesChart();
+        
+        $unidad->labels(['Microbus #1','Microbus #2','Microbus #3']);
+        $unidad->dataset('Unidades mas Preferidas','line',[$unidad1,$unidad2,$unidad3]);
+        $unidad->loaderColor('red');
+        //Unidades mas Preferidas
+        
+        return view('home', compact('chart','ruta','unidad'));
     }
 }
