@@ -54,7 +54,7 @@
                 <td>{{$key +1}}</td>
 
 
-                @if($value->tipox =="imagen")
+                @if($value->tipox =="imagen"  || $value->tipox =="imagenReserva" ||  $value->tipox =="imgListaPost" )
 
                 <td>
                     <div class="lightBoxGallery"><a title="Image from Unsplash" href="{{ $value->url }}" data-gallery=""><img height="60px" width="60px" src="{{ $value->url }}"></a></div>

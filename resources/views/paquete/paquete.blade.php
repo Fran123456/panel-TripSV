@@ -38,8 +38,10 @@
                 <th>No</th>
                 <th>Titulo</th>
                 <th>Cupo</th>
-                <th>Asignar multimedia</th>
+                <th>Stock</th>
+                <th>multimedia</th>
                 <th>Ver</th>
+                <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -49,8 +51,10 @@
                 <td>{{$key +1}}</td>
                 <td>{{$pack->titulo}}</td>
                 <td>{!!$pack->cupo!!}</td>
+                <td>{!!$pack->stock!!}</td>
                 <td><a class="btn btn-sm btn-success" href="{{ url('/create-multimedia/'.$pack->id_paquete) }}">Multimedia</a></td>
-                <td><a class="btn btn-sm btn-warning" href="{{route('paquete.show',$pack->id_paquete)}}">Ver</a></td>
+                <td><a class="btn btn-sm btn-info" href="{{route('paquete.show',$pack->id_paquete)}}">Ver</a></td>
+                <td><a class="btn btn-sm btn-warning" href="{{route('paquete.edit',$pack->id_paquete)}}">Editar</a></td>
                 
                 <td>
                     {!! Form::open(['route' => ['paquete.destroy', $pack->id_paquete], 'method' => 'DELETE']) !!}

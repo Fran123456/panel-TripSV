@@ -125,7 +125,18 @@ class PaqueteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $transporte =tran::get();
+        $guias = Guia::where('disponibilidad', 'Disponible')->get();
+
+
+         $dataPaquete = package::where('id_paquete', $id)->first();
+         $guiaPaquete = Guia::find($dataPaquete->guia_id);
+         $rutaPaquete = ruta_turistica::where('id_ruta', $dataPaquete->rutaTuristica_id)->first();
+         $trasportePaquete = tran::find($dataPaquete->transporte_id);
+
+      return view('paquete.edit', compact('guias', 'transporte' , 'dataPaquete','guiaPaquet','rutaPaquete','trasportePaquete
+
+        '));
     }
 
     /**
@@ -137,17 +148,11 @@ class PaqueteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ruta = ruta_turistica::find($id);
-             
-        $ruta->titulo = $request->titulo_ruta;
-        $ruta->latitudInicial = $request->lati_inicial;
-        $ruta->longitudInicial = $request->long_inicial;
-        $ruta->latitudfinal = $request->lati_final;
-        $ruta->longitudfinal = $request->long_final;
-        $ruta->descripcion = $request->descripcion;
-        $ruta->save();
+        //$ruta = ruta_turistica::find($id);
+     
 
-        $pack = package::find($id);
+       //$pack = package::find($id);
+         $pack= package::where('id_paquete', $id)->first();
         
         $pack->titulo = $request->titulo;
         $pack->slug = $request->slug;
@@ -161,8 +166,24 @@ class PaqueteController extends Controller
         $pack->guia_id = $request->guia;
         $pack->transporte_id = $request->transporte;
         $pack->save();
+
+
+      $ruta = ruta_turistica::where('id_ruta', $pack->rutaTuristica_id)->first();
+             
+        $ruta->titulo = $request->titulo_ruta;
+        $ruta->latitudInicial = $request->lati_inicial;
+        $ruta->longitudInicial = $request->long_inicial;
+        $ruta->latitudfinal = $request->lati_final;
+        $ruta->longitudfinal = $request->long_final;
+        $ruta->descripcion = $request->descripcion;
+        $ruta->save();
+
+
+
         
         return redirect()->route('paquete.index');
+
+
     }
 
     /**
