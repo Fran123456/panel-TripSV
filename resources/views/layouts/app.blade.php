@@ -136,7 +136,7 @@
                       <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="graph_flot.html">Compras </a></li>
+                            <li><a href="{{route('comprascancel.index')}}">Compras </a></li>
                             <li><a href="{{route('compras.index')}}">Reservado</a></li>
                         </ul>
                     </li>

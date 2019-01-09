@@ -19,25 +19,29 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Edita una unidad</div>
+                <div class="panel-heading">Edita el estado</div>
                 <div class="panel-body">
                    <div class="row">
                        <div class="col-md-12">
-                              <form style="padding-left:20px;padding-right: 20px" action="{{route('updateUnidad',$transp->id)}}" method="post" class="form-horizontal">
+                              <form style="padding-left:20px;padding-right: 20px" action="{{ route('updatecompras',$compra->id_compra) }}" method="post" class="form-horizontal">
                                 {{csrf_field()}}
                                     <div class="form-group">
-                                        <label for="nombre">Nombre de Unidad</label>          
-                                        <input type="text" name="nameT" class="form-control" required="" value="{{$transp->nombre}}">
+                                        <label for="nombre">ID compra</label>          
+                                        <input type="text" readonly=""  class="form-control" required="" value="{{ $compra->id_compra }}">
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="nombre">Descripcion</label>           
-                                        <textarea name="descT" class="form-control" required="">{{$transp->descripcion}}</textarea>
+                                        <label for="nombre">Total</label>           
+                                        <input name="total" class="form-control" readonly="" value="{{ $compra->total }}"></input>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="capacidad">Capacidad</label>          
-                                        <input type="number" name="capaT" class="form-control" required="" value="{{$transp->capacidad}}">
+                                        <label for="capacidad">Estado</label>          
+                                        <select name="estado" class="form-control" required="" value="">
+                                          <option value="reservado">Reservado</option>
+                                          <option value="completado">Completado</option>
+
+                                        </select>
                                     </div>
                                     
                                     <div class="form-group">

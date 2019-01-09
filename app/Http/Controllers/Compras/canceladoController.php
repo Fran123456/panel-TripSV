@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Compras;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Compra;
-class ComprasController extends Controller
+
+class canceladoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class ComprasController extends Controller
      */
     public function index()
     {
-        $compras = Compra::where('estado','reservado')->get();
-        return view('compras.compras',compact('compras'));
+       $compras = Compra::where('estado','completado')->get();
+        return view('compras.cancelados',compact('compras'));
     }
 
     /**
@@ -58,8 +59,7 @@ class ComprasController extends Controller
      */
     public function edit($id)
     {
-        $compra= compra::where('id_compra',$id)->first();
-        return view('compras.editar',compact('compra'));
+        //
     }
 
     /**
@@ -71,10 +71,7 @@ class ComprasController extends Controller
      */
     public function update(Request $request, $id)
     {
-    Compra::where('id_compra', $id)->update(['estado' => $request->estado ]);
-   // $comp->estado=$request->estado;
-   // $comp->save();
-    return redirect()->route('compras.index')->with('msgN','Unidad actualizada correctamente');   
+        //
     }
 
     /**

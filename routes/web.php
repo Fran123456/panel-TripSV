@@ -78,8 +78,12 @@ route::get('multimedia-post','Multimedia\MultimediaController@index2')->name('mu
 
 //guia multimedia
 
-//Compras
+//Compras reservadas
 route::resource('compras','Compras\ComprasController');
+route::post('updatecompras/{id}','Compras\ComprasController@update')->name('updatecompras');
+//compras cancelados
+route::resource('comprascancel','Compras\canceladoController');
+route::post('updatecancel/{id}','Compras\canceladoController@update')->name('updatecancel');
 
 
 
