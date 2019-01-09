@@ -54,7 +54,7 @@
     </div>
 </div>
 <hr>
-<h2 style="text-align: center;">Guias con mas Viajes Hechos</h2>
+<h2 style="text-align: center;">Guias con m&aacute;s Viajes Hechos</h2>
 <div class="container">
     <div class="row">
         <div>
@@ -62,11 +62,13 @@
         </div>
         <hr>
         <div>
-            <h2 style="text-align: center;">Rutas mas Visitadas&nbsp;<span style="font-size: 15px;">(Año 2018)</span></h2>
+            <h2 style="text-align: center;">Rutas m&aacute;s Visitadas&nbsp;<span style="font-size: 15px;">(Año 2018)</span></h2>
             {!! $ruta->container() !!}
         </div>
+        <hr>
         <div>
-            
+            <h2 style="text-align: center;">Unidades m&aacute;s Preferidas</h2>
+            {!! $unidad->container() !!}
         </div>
     </div>
 </div>
@@ -81,7 +83,7 @@
 <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
 {!! $chart->script() !!}
 {!! $ruta->script() !!}
-
+{!! $unidad->script() !!}
 <script type="text/javascript">
    
 </script>

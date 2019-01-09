@@ -132,6 +132,15 @@
                    <li><a href="{{route('multimedia.index')}}"><i class="fa fa-file-image-o" aria-hidden="true"></i><span class="nav-label">Multimedia paquetes</span></a></li>
 
                     <li><a href="{{route('multimedia-post')}}"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="nav-label">Multimedia blog</span></a></li>
+                      
+                      <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Compras</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="graph_flot.html">Compras </a></li>
+                            <li><a href="{{route('compras.index')}}">Reservado</a></li>
+                        </ul>
+                    </li>
+                    <li>
 
                    
 

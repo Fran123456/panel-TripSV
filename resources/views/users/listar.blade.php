@@ -62,6 +62,18 @@
                 <td>{{$user->name}}</td>
                 <td><img src="{{$user->img}}" width="50px" height="50px"></td>
                 <td>{{$user->email}}</td>
+
+                @if($user->id == Auth::user()->id)
+                <td>
+                  <button disabled="" class="btn btn-info">Editar</button>
+                </td>
+                <td>{!! Form::open(['route' => ['usuario.destroy', $user->id], 'method' => 'DELETE']) !!}
+                                        <button disabled="" class="btn btn-sm btn-danger">
+                                            Eliminar
+                                        </button>                           
+                    {!! Form::close() !!}</td>
+
+                @else
                 <td>
                     <a class="btn btn-info" href="{{route('usuario.edit',$user->id)}}" id="edit">Editar</a>
                     
@@ -71,6 +83,8 @@
                                             Eliminar
                                         </button>                           
                     {!! Form::close() !!}</td>
+
+                @endif
             </tr>
             @endforeach
             

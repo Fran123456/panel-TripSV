@@ -78,6 +78,10 @@ route::get('multimedia-post','Multimedia\MultimediaController@index2')->name('mu
 
 //guia multimedia
 
+//Compras
+route::resource('compras','Compras\ComprasController');
+
+
 
 
 //noty
