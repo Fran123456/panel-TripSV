@@ -19,6 +19,7 @@
             </div>
 
             <div class="panel panel-default">
+
                 <div class="panel-heading">Edita el estado</div>
                 <div class="panel-body">
                    <div class="row">
@@ -42,6 +43,7 @@
                                           <option value="completado">Completado</option>
 
                                         </select>
+
                                     </div>
                                     
                                     <div class="form-group">

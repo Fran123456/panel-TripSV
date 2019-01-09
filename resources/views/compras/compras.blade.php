@@ -41,7 +41,8 @@
                 <th>Paquete_id</th>
                 <th>Ubicacion_id</th>
                 <th>Cliente_id</th>
-                <th>Actualizar estado</th>
+
+
             </tr>
         </thead>
         <tbody>
@@ -57,10 +58,12 @@
                 <td>{!!$tran->ubicacion_id!!}</td>
                 <td>{{$tran->cliente_id}}</td>
                 <td>
+
                     <a class="btn btn-info" href="{{route('compras.edit',$tran->id_compra)}}">Editar</a>
                     
                 </td>
               
+
             </tr>
             @endforeach
             

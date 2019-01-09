@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Compras;
+namespace App\Http\Controllers;
 
+use App\GuiaTuristicosModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Compra;
-class ComprasController extends Controller
+
+class GuiaTuristicosModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class ComprasController extends Controller
      */
     public function index()
     {
-
-        $compras = Compra::where('estado','reservado')->get();
-
-        return view('compras.compras',compact('compras'));
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class ComprasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\GuiaTuristicosModel  $guiaTuristicosModel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(GuiaTuristicosModel $guiaTuristicosModel)
     {
         //
     }
@@ -55,44 +52,33 @@ class ComprasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\GuiaTuristicosModel  $guiaTuristicosModel
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(GuiaTuristicosModel $guiaTuristicosModel)
     {
-
-        $compra= compra::where('id_compra',$id)->first();
-        return view('compras.editar',compact('compra'));
-
-
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\GuiaTuristicosModel  $guiaTuristicosModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GuiaTuristicosModel $guiaTuristicosModel)
     {
-
-    Compra::where('id_compra', $id)->update(['estado' => $request->estado ]);
-   // $comp->estado=$request->estado;
-   // $comp->save();
-    return redirect()->route('compras.index')->with('msgN','Unidad actualizada correctamente');   
-
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\GuiaTuristicosModel  $guiaTuristicosModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(GuiaTuristicosModel $guiaTuristicosModel)
     {
         //
     }
