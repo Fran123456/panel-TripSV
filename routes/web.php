@@ -83,3 +83,8 @@ route::get('multimedia-post','Multimedia\MultimediaController@index2')->name('mu
 //noty
 Route::get('/notify', 'noty\NotificationController@index')->name('noty');
 
+//SpreadSheet
+route::get('/SpreadSheet','excel\excelController@index')->name('SpreadSheet');
+route::get('/guiasExcel','excel\excelController@guiasExcel')->name('guiasExcel');
+route::get('/unidadesExcel','excel\excelController@unidadesExcel')->name('unidadesExcel');
+route::get('/turistasExcel','excel\excelController@turistasExcel')->name('turistasExcel');

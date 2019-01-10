@@ -133,8 +133,8 @@
 
                     <li><a href="{{route('multimedia-post')}}"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="nav-label">Multimedia blog</span></a></li>
 
-                   
-
+                   <li><a href="{{route('SpreadSheet')}}"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span class="nav-label">Reportes Excel</span></a></li>
+                    
 
               </ul>
           </div>
