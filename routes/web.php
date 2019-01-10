@@ -75,16 +75,36 @@ route::post('/updatemultimedia/{id}','Multimedia\MultimediaController@update')->
 route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name('getpaquetes');
 
 route::get('multimedia-post','Multimedia\MultimediaController@index2')->name('multimedia-post');
-
+route::get('multimedia-nuevo','Multimedia\MultimediaController@nuevo__')->name('multimedia-nuevo');
 //guia multimedia
+
+
+//Compras reservadas
+route::resource('compras','Compras\ComprasController');
+route::post('updatecompras/{id}','Compras\ComprasController@update')->name('updatecompras');
+//compras cancelados
+route::resource('comprascancel','Compras\canceladoController');
+route::post('updatecancel/{id}','Compras\canceladoController@update')->name('updatecancel');
+
 
 
 
 //noty
 Route::get('/notify', 'noty\NotificationController@index')->name('noty');
 
+
 //SpreadSheet
 route::get('/SpreadSheet','excel\excelController@index')->name('SpreadSheet');
 route::get('/guiasExcel','excel\excelController@guiasExcel')->name('guiasExcel');
 route::get('/unidadesExcel','excel\excelController@unidadesExcel')->name('unidadesExcel');
 route::get('/turistasExcel','excel\excelController@turistasExcel')->name('turistasExcel');
+
+
+//configuracion:
+
+route::resource('config','config\configController');
+Route::get('configuraciones-home', 'config\configController@configuracion_home')->name('configuraciones-home');
+
+//config para home
+route::resource('config-home','config\configHomeController');
+

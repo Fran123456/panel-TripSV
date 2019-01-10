@@ -85,7 +85,9 @@ class PaqueteController extends Controller
         $pack->body = $request->body;
         $pack->estado = $request->estado;
         $pack->cupo = $request->cupo;
-        $pack->stock = $request->stock;
+        $pack->contenido_previo = $request->contenido_previo;
+        $pack->precio = $request->precio;
+        $pack->stock = 0;
         $pack->fechaDeViaje = $request->fechaViaje;
         $pack->hora_partida = $request->hora_partida;
         $pack->hora_regreso = $request->hora_regreso;
@@ -194,7 +196,7 @@ class PaqueteController extends Controller
      */
     public function destroy($id)
     {
-        package::find($id)->delete();
+        package::where('id_paquete', $id)->delete();
 
         return back()->with('msgD','Item eliminado con exito');
     }

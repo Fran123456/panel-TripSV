@@ -60,7 +60,9 @@ class MultimediaController extends Controller
      */
     public function store(Request $request)
     {
-      $r = package::where('id_paquete',$request['idpaquete'])->first();
+
+
+     $r = package::where('id_paquete',$request['idpaquete'])->first();
       $respuesta = 0;
       if($r == null){
         $respuesta = 1;
@@ -151,6 +153,10 @@ class MultimediaController extends Controller
            
         }
         return view('multimedia.nuevo', compact('paquete','va'));
+    }
+
+    public function nuevo__(){
+        return view('multimedia.nuevo__');
     }
 
 

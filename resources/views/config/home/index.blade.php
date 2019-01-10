@@ -22,55 +22,68 @@
 
     
     <div class="col-md-6">
-        <h3>Gestión de paquetes</h3>
+        <h3>Gestión de imagenes para carrusel de página Home</h3>
     </div>
     <div class="col-md-6 text-right">
-        <a class="btn btn-info" href="{{route('paquete.create')}}">Agregar un paquete</a> 
+
+     
+
+        <br>
+
         <br>
         <br>
     </div>
-    
 
-    <table class="table table-bordered table-hover table-striped" id="paquete">
+
+    <table class="table table-bordered table-hover table-striped" id="multimedia22">
 
         <thead>
             <tr class="">
-                <th>No</th>
-                <th>Titulo</th>
-                <th>Cupo</th>
-                <th>Stock</th>
-                <th>multimedia</th>
-                <th>Ver</th>
-              
-                <th>Eliminar</th>
+                <th width="60">N°</th>
+                <th>Multimedia</th>
+                <th>Paquete asociado</th>
+                <th width="160">Eliminar</th>
+
             </tr>
         </thead>
         <tbody>
-            @foreach($paquete as $key => $pack)
+            @foreach($data as $key => $value)
             <tr>
                 <td>{{$key +1}}</td>
-                <td>{{$pack->titulo}}</td>
-                <td>{!!$pack->cupo!!}</td>
-                <td>{!!$pack->stock!!}</td>
-                <td><a class="btn btn-sm btn-success" href="{{ url('/create-multimedia/'.$pack->id_paquete) }}">Multimedia</a></td>
-                <td><a class="btn btn-sm btn-info" href="{{route('paquete.show',$pack->id_paquete)}}">Ver</a></td>
-               
+                <td>
+                    <div class="lightBoxGallery"><a title="Image from Unsplash" href="{{ $value->url }}" data-gallery=""><img height="60px" width="60px" src="{{ $value->url }}"></a></div>
+                </td>        
+                <td>{{ $paquete[$key]->titulo}}</td>
                 
                 <td>
-                    {!! Form::open(['route' => ['paquete.destroy', $pack->id_paquete], 'method' => 'DELETE']) !!}
+                    {!! Form::open(['route' => ['multimedia.destroy', $value->id], 'method' => 'DELETE']) !!}
                                         <button onclick="return confirm('Estas seguro de Eliminar este Registro')" class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>                           
                     {!! Form::close() !!}
-                </td>
             </tr>
             @endforeach
             
         </tbody>
         
     </table>
+
+    <!--PARA GALERIA-->
+                                 <div id="blueimp-gallery" class="blueimp-gallery">
+                                    <div class="slides"></div>
+                                    <h3 class="title"></h3>
+                                    <a class="prev">‹</a>
+                                    <a class="next">›</a>
+                                    <a class="close">×</a>
+                                    <a class="play-pause"></a>
+                                    <ol class="indicator"></ol>
+                                   </div>
+   
 </div>
 
 
+
+
+                       
 @endsection
 

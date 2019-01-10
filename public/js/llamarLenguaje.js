@@ -189,3 +189,15 @@ $("#multimedia").dataTable({
           ],
 
     });
+
+
+
+
+
+$("#multimedia22").dataTable({
+      "language": {
+        "url": "DataTables/lenguaje.js"
+      },
+
+
+    });

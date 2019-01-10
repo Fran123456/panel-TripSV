@@ -73,7 +73,11 @@
                                             <h4 class="modal-title">Video</h4> 
                                         </div>
                                         <div class="modal-body text-center">
-                                            {!! $value->url !!} 
+
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                              <iframe class="embed-responsive-item" frameborder="0" width="1280" height="720" src="{!! $value->url !!} " allowfullscreen allow="autoplay"></iframe>
+                                            </div>
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>

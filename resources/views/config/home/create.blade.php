@@ -29,13 +29,9 @@
 
           <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            @if($va == 0)
-                            <h5>Multimedia al paquete "{{ $paquete->titulo}}"</h5>
-                            @endif
-
-                            @if($va == 1)
-                            <h5>Multimedia al post "{{ $paquete->titulo}}"</h5>
-                            @endif
+                          
+                            <h5>Gestión de banner de página de inicio</h5>
+                           
 
                             <div class="ibox-tools">
                                 <a class="collapse-link">
@@ -46,7 +42,7 @@
                         </div>
                         <div class="ibox-content">
 
-                            <form  class="form-horizontal" action="{{route('multimedia.store')}}" method="post" enctype="multipart/form-data">
+                            <form  class="form-horizontal" action="{{route('config-home.store')}}" method="post" enctype="multipart/form-data">
                               {{ csrf_field() }}
                                 <div class="form-group">
                                   <input type="hidden" name="multi" value="paquete">
@@ -54,23 +50,10 @@
                                     <label class="col-lg-2 control-label">Tipo multimedia</label>
                                     <div class="col-lg-4">
                                      <select name="seleccion"class="form-control">
-                                    
-                                      @if($va == 0)<!--paquete-->
-                                        <option  value="imagen">Imagen URL</option>
-                                        <option value="video">video URL</option>
-                                        <option value="caruselHome">Carusel URL</option>
-                                         <option value="imagenReserva">Imagen reserva URL</option>
-                                         <option value="topES">Top URL</option>
-                                      @elseif($va == 1)
-                                          <option  value="imagen">Imagen URL</option>
-                                        <option value="video">video URL</option>
-                                        <option value="imgListaPost">Imagen lista post URL</option>
-                                      @else
-                                      <option value="banerMural">Banner URL</option>
-                                      <option value="imgVideoHome">Banner URL</option>
-                                      <option value="videoHome">Video home URL</option>
-                                      <option value="portadaListaPost">Portada</option>
-                                      @endif
+                                     <option value="banerMural">Banner para mural</option>
+                                     <option value="imgVideoHome">Imagen para video de home</option>
+                                     <option value="videoHome">Video de home</option>
+                                     <option value="portadaListaPost">Portada de blog</option>
                                     </select> 
                                     </div>
                                     <input type="hidden" name="centinelatipo" value="imagen" id="centinelatipo">
@@ -85,11 +68,7 @@
                                     </div>
 
                                 <br>
-                                  @if($va == 0)
-                                 <input type="hidden" value="{{$paquete->id_paquete}}" name="idpaquete">
-                                 @else
-                                <input type="hidden" value="{{$paquete->id}}" name="idpaquete">
-                                 @endif
+                                  
 
                                 <div class="form-group">
                                   <div class="col-lg-4 text-right">
