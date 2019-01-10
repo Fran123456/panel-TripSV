@@ -109,10 +109,10 @@
                                </div>
 
                                 <div class="form-group" id="data_1">
-                                <label class="col-lg-2 control-label">Usuario:</label>
+                                <label class="col-lg-2 control-label">Precio:</label>
                                 <div class="col-lg-4 ">
 
-                                   <input type="text" readonly="" name="user" class="form-control" value="{{Auth::user()->id}}">
+                                   <input type="text"  name="precio" class="form-control" value="">
                                 </div>
                                 <label class="col-lg-2 control-label">Unidad de trasporte</label>
                                     <div class="col-lg-4">
@@ -124,6 +124,16 @@
                                       </select>
                                     </div>
                                </div>
+
+
+
+                               
+
+                               <div class="form-group"><label class="col-lg-2 control-label">Contenido previo</label>
+
+                                    <div class="col-lg-10"> <textarea class="form-control" name="contenido_previo"></textarea> </div>
+
+                                </div>
 
 
                                 <div class="form-group"><label class="col-lg-2 control-label">Cuerpo</label>
