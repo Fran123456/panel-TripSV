@@ -22,7 +22,7 @@
 
     
     <div class="col-md-6">
-        <h3>Gestión de multimedia</h3>
+        <h3>Gestión de imagenes para carrusel de página Home</h3>
     </div>
     <div class="col-md-6 text-right">
 
@@ -35,62 +35,25 @@
     </div>
 
 
-    <table class="table table-bordered table-hover table-striped" id="multimedia">
+    <table class="table table-bordered table-hover table-striped" id="multimedia22">
 
         <thead>
             <tr class="">
                 <th width="60">N°</th>
                 <th>Multimedia</th>
-
-                <th>Tipo</th>
-                <th>Post</th>
+                <th>Paquete asociado</th>
                 <th width="160">Eliminar</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach($multimedia1 as $key => $value)
+            @foreach($data as $key => $value)
             <tr>
                 <td>{{$key +1}}</td>
-
-
-                @if($value->tipox =="imagen"  || $value->tipox =="imagenReserva" ||  $value->tipox =="imgListaPost" )
-
                 <td>
                     <div class="lightBoxGallery"><a title="Image from Unsplash" href="{{ $value->url }}" data-gallery=""><img height="60px" width="60px" src="{{ $value->url }}"></a></div>
-                </td>
-                @else
-                   <td class="text-center">
-                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$key}}">
-                                <i class="fa fa-play" aria-hidden="true"></i> Ver
-                        </button>
-
-
-                         <div class="modal inmodal" id="{{$key}}" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content animated fadeIn">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Video</h4> 
-                                        </div>
-                                        <div class="modal-body text-center">
-
-                                            <div class="embed-responsive embed-responsive-16by9">
-                                              <iframe class="embed-responsive-item" frameborder="0" width="1280" height="720" src="{!! $value->url !!} " allowfullscreen allow="autoplay"></iframe>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                   </td>  
-                            
-                @endif
-
-                <td>{{$value->tipox}}</td>             
-                <td>{{$value->titulo}}</td>
+                </td>        
+                <td>{{ $paquete[$key]->titulo}}</td>
                 
                 <td>
                     {!! Form::open(['route' => ['multimedia.destroy', $value->id], 'method' => 'DELETE']) !!}

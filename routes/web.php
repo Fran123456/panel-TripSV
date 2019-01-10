@@ -75,7 +75,7 @@ route::post('/updatemultimedia/{id}','Multimedia\MultimediaController@update')->
 route::get('/getpaquetes','Multimedia\MultimediaController@get_paquetes')->name('getpaquetes');
 
 route::get('multimedia-post','Multimedia\MultimediaController@index2')->name('multimedia-post');
-
+route::get('multimedia-nuevo','Multimedia\MultimediaController@nuevo__')->name('multimedia-nuevo');
 //guia multimedia
 
 
@@ -92,3 +92,11 @@ route::post('updatecancel/{id}','Compras\canceladoController@update')->name('upd
 //noty
 Route::get('/notify', 'noty\NotificationController@index')->name('noty');
 
+
+//configuracion:
+
+route::resource('config','config\configController');
+Route::get('configuraciones-home', 'config\configController@configuracion_home')->name('configuraciones-home');
+
+//config para home
+route::resource('config-home','config\configHomeController');

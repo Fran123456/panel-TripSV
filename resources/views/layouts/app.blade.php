@@ -144,7 +144,7 @@
                     </li>
                     <li>
 
-                   
+                   <li><a href="{{route('config.index')}}"><i class="fa fa-cog" aria-hidden="true"></i><span class="nav-label">Configuración</span></a></li>
 
 
               </ul>
