@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Compra;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 664698cd1a94941067def138f078244b7c9060b2
 class canceladoController extends Controller
 {
     /**
@@ -85,6 +88,7 @@ class canceladoController extends Controller
     {
         //
     }
+<<<<<<< HEAD
     public function invoice(Request $request, $id)
     {
         $inv=Compra::where('id_compra',$id)->get();
@@ -94,4 +98,6 @@ class canceladoController extends Controller
         'product' => 'Your Product',
     ]);
     }
+=======
+>>>>>>> 664698cd1a94941067def138f078244b7c9060b2
 }

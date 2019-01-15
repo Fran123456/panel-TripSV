@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Compras;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Compra;
+
 use App\comprobante;
+
+
 class ComprasController extends Controller
 {
     /**
@@ -82,6 +85,7 @@ class ComprasController extends Controller
     Compra::where('id_compra', $id)->update(['estado' => $request->estado ]);
    // $comp->estado=$request->estado;
    // $comp->save();
+
     if($request->estado=='completado')
     {
         comprobante::create([
@@ -90,7 +94,9 @@ class ComprasController extends Controller
 ]);
     }
 
-    return redirect()->route('compras.index')->with('msgN','Pago  actualizado correctamente');   
+
+    return redirect()->route('compras.index')->with('msgN','Unidad actualizada correctamente');   
+
 
 
     }
