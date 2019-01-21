@@ -28,9 +28,18 @@
                                 {{csrf_field()}}
                                     <div class="form-group">
                                         <label for="nombre">ID compra</label>          
+<<<<<<< HEAD
+                                        <input type="text" readonly="" name="compra_id" class="form-control" required="" value="{{ $compra->id_compra }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nombre">Total</label>           
+                                        <input name="paquete_id" class="form-control" readonly="" value="{{ $compra->paquete_id }}"></input>
+                                    </div>
+=======
                                         <input type="text" readonly=""  class="form-control" required="" value="{{ $compra->id_compra }}">
                                     </div>
                                     
+>>>>>>> 664698cd1a94941067def138f078244b7c9060b2
                                     <div class="form-group">
                                         <label for="nombre">Total</label>           
                                         <input name="total" class="form-control" readonly="" value="{{ $compra->total }}"></input>

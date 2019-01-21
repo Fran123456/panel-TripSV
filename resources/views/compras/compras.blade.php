@@ -22,6 +22,11 @@
 
     
     <div class="col-md-6">
+<<<<<<< HEAD
+        <h3>Gestión de pagos</h3>
+    </div>
+   
+=======
         <h3>Gestión de unidades</h3>
     </div>
     <div class="col-md-6 text-right">
@@ -29,6 +34,7 @@
         <br>
         <br>
     </div>
+>>>>>>> 664698cd1a94941067def138f078244b7c9060b2
     
     <table class="table table-bordered table-hover table-striped" id="unidades">
         <thead>

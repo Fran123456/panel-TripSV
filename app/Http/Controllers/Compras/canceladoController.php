@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Compra;
 
+
+
+
 class canceladoController extends Controller
 {
     /**
@@ -83,5 +86,15 @@ class canceladoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function invoice(Request $request, $id)
+    {
+        $inv=Compra::where('id_compra',$id)->get();
+
+        return $request->user()->downloadInvoice($id, [
+        'vendor'  => 'Tripsv',
+        'product' => 'Your Product',
+    ]);
     }
 }

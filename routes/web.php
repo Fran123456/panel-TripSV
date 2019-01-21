@@ -84,6 +84,11 @@ route::resource('compras','Compras\ComprasController');
 route::post('updatecompras/{id}','Compras\ComprasController@update')->name('updatecompras');
 //compras cancelados
 route::resource('comprascancel','Compras\canceladoController');
+
+route::get('invoice/{id}','Compras\canceladoController@invoice')->name('invoice');
+route::post('updatecancel/{id}','Compras\canceladoController@update')->name('updatecancel');
+//generar facturas
+
 route::post('updatecancel/{id}','Compras\canceladoController@update')->name('updatecancel');
 
 
@@ -107,6 +112,7 @@ Route::get('configuraciones-home', 'config\configController@configuracion_home')
 route::get('configuraciones-aboutUs','config\configController@configuracion_AboutUs')->name('configuraciones-aboutUs');
 //config para home
 route::resource('config-home','config\configHomeController');
+
 
 
 //config para AboutUs
