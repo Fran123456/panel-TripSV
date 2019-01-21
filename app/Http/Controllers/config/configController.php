@@ -87,4 +87,9 @@ class configController extends Controller
     public function configuracion_home(){
         return view('config.home');
     }
+    
+    public function configuracion_AboutUs()
+    {
+        return view('config.aboutUs');
+    }
 }

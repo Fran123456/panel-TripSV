@@ -104,7 +104,14 @@ route::get('/turistasExcel','excel\excelController@turistasExcel')->name('turist
 
 route::resource('config','config\configController');
 Route::get('configuraciones-home', 'config\configController@configuracion_home')->name('configuraciones-home');
-
+route::get('configuraciones-aboutUs','config\configController@configuracion_AboutUs')->name('configuraciones-aboutUs');
 //config para home
 route::resource('config-home','config\configHomeController');
 
+
+//config para AboutUs
+route::resource('config-aboutUs','config\configAboutUsController');
+route::post('update-bg','config\configAboutUsController@update')->name('update-bg');
+
+route::get('view-text','config\configAboutUsController@viewText')->name('view-text');
+route::post('update-text','config\configAboutUsController@updateText')->name('update-text');
